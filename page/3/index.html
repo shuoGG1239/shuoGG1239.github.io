@@ -20,32 +20,28 @@
     var CONFIG = {"hostname":"shuogg1239.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="写markdown有这样的需求: 点击某个词跳转到markdown文章的某个位置(某个锚点), 但是写完发现有些点了跳不过去 原因就是跳转锚点的格式没写对, 格式见下面   必须全小写 空格用’-‘代替 ‘_’ ‘()’需要去掉">
-<meta property="og:type" content="article">
-<meta property="og:title" content="markdown锚点跳转的坑">
-<meta property="og:url" content="https://shuogg1239.github.io/2019/11/13/markdown_note/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="ShuoGG&#39;s blog">
+<meta property="og:url" content="https://shuogg1239.github.io/page/3/index.html">
 <meta property="og:site_name" content="ShuoGG&#39;s blog">
-<meta property="og:description" content="写markdown有这样的需求: 点击某个词跳转到markdown文章的某个位置(某个锚点), 但是写完发现有些点了跳不过去 原因就是跳转锚点的格式没写对, 格式见下面   必须全小写 空格用’-‘代替 ‘_’ ‘()’需要去掉">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-11-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-06-16T13:23:35.256Z">
 <meta property="article:author" content="ShuoGG">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://shuogg1239.github.io/2019/11/13/markdown_note/">
+<link rel="canonical" href="https://shuogg1239.github.io/page/3/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>markdown锚点跳转的坑 | ShuoGG's blog</title>
+  <title>ShuoGG's blog</title>
   
 
 
@@ -144,14 +140,13 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content index posts-expand">
             
-
-    
+      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2019/11/13/markdown_note/">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2018/07/21/image2text/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -163,9 +158,10 @@
       <meta itemprop="name" content="ShuoGG's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          markdown锚点跳转的坑
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/21/image2text/" class="post-title-link" itemprop="url">Py小玩具-简单好用的OCR</a>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -174,7 +170,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-13 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-13T00:00:00+08:00">2019-11-13</time>
+              <time title="创建时间：2018-07-21 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-21T00:00:00+08:00">2018-07-21</time>
             </span>
 
           
@@ -188,46 +184,186 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
-<li>写markdown有这样的需求: 点击某个词跳转到markdown文章的某个位置(某个锚点), 但是写完发现有些点了跳不过去</li>
-<li>原因就是跳转锚点的格式没写对, 格式见下面</li>
+          <ul>
+<li>截图识别<br></li>
+<li>图片识别<br></li>
 </ul>
-<h4 id="锚点title需要注意的格式"><a href="#锚点title需要注意的格式" class="headerlink" title="锚点title需要注意的格式"></a>锚点title需要注意的格式</h4><ul>
-<li>必须全小写</li>
-<li>空格用’-‘代替</li>
-<li>‘_’ ‘()’需要去掉</li>
-</ul>
-<h4 id="错误例子"><a href="#错误例子" class="headerlink" title="错误例子"></a>错误例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[点我跳转1](&#x2F;shuogg&#x2F;article.html#如何取一个好的ID)  </span><br><span class="line">[点我跳转2](&#x2F;shuogg&#x2F;article.html#game system搭建)</span><br><span class="line">[点我跳转3](&#x2F;shuogg&#x2F;article.html#game_system搭建)</span><br></pre></td></tr></table></figure>
-
-<h4 id="正确例子"><a href="#正确例子" class="headerlink" title="正确例子"></a>正确例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[点我跳转1](&#x2F;shuogg&#x2F;article.html#如何取一个好的id)  </span><br><span class="line">[点我跳转2](&#x2F;shuogg&#x2F;article.html#game-system搭建)</span><br><span class="line">[点我跳转3](&#x2F;shuogg&#x2F;article.html#gamesystem搭建)</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/shuoGG1239/Image2Text" target="_blank" rel="noopener">https://github.com/shuoGG1239/Image2Text</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/21/image2text/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2019/06/09/color_catcher/" rel="prev" title="Py小玩具-简易取色器">
-      <i class="fa fa-chevron-left"></i> Py小玩具-简易取色器
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/05/redis_ae/" rel="next" title="Redis源码阅读-事件模型ae">
-      Redis源码阅读-事件模型ae <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
-    
   </article>
   
   
   
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2018/07/11/qcandyui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/11/qcandyui/" class="post-title-link" itemprop="url">快速美化PyQt应用--QCandyUi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-11T00:00:00+08:00">2018-07-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>快速美化PyQt应用</li>
+<li>项目地址: <a href="https://github.com/shuoGG1239/QCandyUi" target="_blank" rel="noopener">https://github.com/shuoGG1239/QCandyUi</a></li>
+</ul>
+<ul>
+<li>pip install QCandyUi</li>
+<li>仅需在需要美化的窗口类上加上@colorful装饰器即可</li>
+<li>也可以调用CandyWindow.creatWindow()返回经美化的QWidget (推荐用这种)</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/11/qcandyui/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2018/07/06/pyinstaller_keng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/06/pyinstaller_keng/" class="post-title-link" itemprop="url">总结Pyinstaller的坑及终极解决方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-06T00:00:00+08:00">2018-07-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>下面是博主经测试的觉得坑比较少的环境搭配<ol>
+<li>Python3.4 + PyQt5.4 + Pyinstaller3.2.1</li>
+<li>Python3.5 + PyQt5.8 + Pyinstaller3.2.1</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>博主好几次用Pyinstaller遇到坑时都有考虑换工具如py2exe或cx-freeze之类的, 依旧无法解决 (最后还是用pyinstaller解决了)</li>
+<li>所以没必要换其他工具, pyinstaller就够了 </li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/06/pyinstaller_keng/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 
 
@@ -279,7 +415,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锚点title需要注意的格式"><span class="nav-number">2.</span> <span class="nav-text">锚点title需要注意的格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误例子"><span class="nav-number">3.</span> <span class="nav-text">错误例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正确例子"><span class="nav-number">4.</span> <span class="nav-text">正确例子</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
