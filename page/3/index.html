@@ -22,13 +22,13 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="ShuoGG&#39;s blog">
-<meta property="og:url" content="https://shuogg1239.github.io/page/2/index.html">
+<meta property="og:url" content="https://shuogg1239.github.io/page/3/index.html">
 <meta property="og:site_name" content="ShuoGG&#39;s blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="ShuoGG">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://shuogg1239.github.io/page/2/">
+<link rel="canonical" href="https://shuogg1239.github.io/page/3/">
 
 
 <script id="page-configurations">
@@ -146,7 +146,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/05/05/redis_ae/">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2019/06/09/color_catcher/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -160,297 +160,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/redis_ae/" class="post-title-link" itemprop="url">Redis源码阅读-事件模型ae</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-05T00:00:00+08:00">2020-05-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>src/ae.c</li>
-</ul>
-<ul>
-<li><code>src/ae.c</code>下的<code>void aeMain(aeEventLoop *eventLoop)</code>函数; 推荐从这个函数开始阅读</li>
-<li>我们着重看下<code>aeMain</code>里面<code>aeProcessEvents(eventLoop, AE_ALL_EVENTS)</code>做了什么; 这里我们留意一下里面的<code>aeApiPoll</code>函数, 该函数用于<code>获取可执行的事件</code>, 获取之后在下面的for循环中处理事件, 执行事件处理器<code>fe-&gt;rfileProc(eventLoop,fd,fe-&gt;clientData,mask)</code></li>
-<li><code>aeApiPoll</code>函数是ae模块提供的一个接口, 在<code>ae_epoll.c</code> <code>ae_kqueue.c</code> <code>ae_select.c</code> <code>ae_evport.c</code>都做了相应的具体实现, 也是所谓<code>IO多路复用</code>各平台的具体实现, 目的为了兼容不同平台</li>
-<li>备注: 也许你会好奇为啥<code>IO多路复用</code>没有<code>iocp</code>的实现难道windows就没人权吗, 其实redis的官方版本是不支持windows的, windows版本在<code>https://github.com/microsoftarchive/redis</code>由微软团队自己维护, 里面就有<code>ae_wsiocp.c</code>即<code>iocp</code>版的实现</li>
-<li>通常说的redis的<code>reactor模型(反应堆)</code>其实说的就是<code>aeMain</code>的大循环中<code>aeProcessEvents</code>做的那些事情: <code>监听网络连接的FD的文件事件---&gt; 获取事件---&gt; 执行事件回调</code></li>
-<li>剩下具体细节不多赘述, 顺着思路看源码即可</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/05/redis_ae/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/05/05/clion_stm32/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="ShuoGG">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShuoGG's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/clion_stm32/" class="post-title-link" itemprop="url">Jetbrains Clion官方支持了Stm32的项目搭建, 说下感想</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-05T00:00:00+08:00">2020-05-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>得知Clion 2019.1之后的版本官方直接支持Stm32项目的创建, 遂怀揣激动之心准备一试…<br> </li>
-</ul>
-<ul>
-<li>照着别人的教程, 一顿操作猛如虎, 一会捣鼓<code>OpenOCD</code>, 一会捣鼓<code>arm-none-eabi-gcc</code>… …说实话, 过程挺麻烦的, 会遇到一些坑</li>
-<li>手头上只有一块老stm32的核心板还有一个Jlink, 烧写调试也只能靠Jlink. 结果捣鼓了老半天, Jlink这块没办法打通, 即没办法用Jlink愉快地Debug, 遂放弃</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/05/clion_stm32/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2019/11/13/markdown_note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="ShuoGG">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShuoGG's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/13/markdown_note/" class="post-title-link" itemprop="url">markdown锚点跳转的坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-13 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-13T00:00:00+08:00">2019-11-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>写markdown有这样的需求: 点击某个词跳转到markdown文章的某个位置(某个锚点), 但是写完发现有些点了跳不过去</li>
-<li>原因就是跳转锚点的格式没写对, 格式见下面</li>
-</ul>
-<ul>
-<li>必须全小写</li>
-<li>空格用’-‘代替</li>
-<li>‘_’ ‘()’需要去掉</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/13/markdown_note/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2019/06/30/paint2sketch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="ShuoGG">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShuoGG's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/30/paint2sketch/" class="post-title-link" itemprop="url">Py小玩具-绘图转线稿</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-30T00:00:00+08:00">2019-06-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>临摹大佬的作品的时候丰富的颜色会反而产生莫名的干扰, 所以希望能转成干净的线稿!</li>
-<li>PS的滤镜效果不理想, 也找不到其他合适的工具, 故自己撸一个试试</li>
-</ul>
-<ul>
-<li><a href="https://github.com/shuoGG1239/Paint2Sketch" target="_blank" rel="noopener">https://github.com/shuoGG1239/Paint2Sketch</a></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/30/paint2sketch/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2019/06/09/japinput/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="ShuoGG">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShuoGG's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/09/japinput/" class="post-title-link" itemprop="url">Py小玩具-罗马转假名</a>
+            <a href="/2019/06/09/color_catcher/" class="post-title-link" itemprop="url">Py小玩具-简易取色器</a>
         </h2>
 
         <div class="post-meta">
@@ -475,13 +185,296 @@
 
       
           <ul>
-<li>罗马音转假名(平假片假), 简单好用…</li>
-<li>属于个人需求, 偶尔要敲一段假名, (日文输入法太笨重污染桌面干净的右下角) 算是用的比较频繁的一个自制玩具</li>
+<li>最近遇到几次取屏幕某处颜色的场景, 用ps去取色又觉得有点麻烦(步骤太多我懒), 索性自己做一个简单的拾色器</li>
+<li>功能极简单就是取屏幕某处的色号, 按下空格把颜色记录下来…</li>
 </ul>
 <p></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/06/09/japinput/#more" rel="contents">
+              <a class="btn" href="/2019/06/09/color_catcher/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2019/03/31/tcpudp_tool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/31/tcpudp_tool/" class="post-title-link" itemprop="url">Py小玩具-Tcp&Udp&串口调试工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-31 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-31T00:00:00+08:00">2019-03-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>以前捣鼓嵌入式的时候写的, 就是那种网上搜就一大把的UDP+TCP+串口调试工具, 为了方便定制些功能于是自己搞了一个, 平时自己用, 功能没啥问题</li>
+</ul>
+<ul>
+<li>界面<br></li>
+<li>十分眼熟的那四种模式…Udp+TcpClient+TcpServer+串口通信<br></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/03/31/tcpudp_tool/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2018/10/25/picpong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/25/picpong/" class="post-title-link" itemprop="url">Py小玩具-MarkDown图床助手</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-25 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-25T00:00:00+08:00">2018-10-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>现在markdown越用越频繁了, md好用是好用, 但就是贴图片的时候有些麻烦: 要截图-&gt;上传图片-&gt;复制图片url, 于是做了个简单的工具: <code>截图-&gt;传图-&gt;生成图片url</code>三合一, 三…三分之一倍的快乐呀!</li>
+</ul>
+<ul>
+<li>截图上传(也可以用快捷键<code>ctrl+shift+alt+F8</code>)</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/10/25/picpong/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2018/07/21/image2text/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/21/image2text/" class="post-title-link" itemprop="url">Py小玩具-简单好用的OCR</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-21 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-21T00:00:00+08:00">2018-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>截图识别<br></li>
+<li>图片识别<br></li>
+</ul>
+<p><a href="https://github.com/shuoGG1239/Image2Text" target="_blank" rel="noopener">https://github.com/shuoGG1239/Image2Text</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/21/image2text/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2018/07/11/qcandyui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/11/qcandyui/" class="post-title-link" itemprop="url">快速美化PyQt应用--QCandyUi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-11T00:00:00+08:00">2018-07-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>快速美化PyQt应用</li>
+<li>项目地址: <a href="https://github.com/shuoGG1239/QCandyUi" target="_blank" rel="noopener">https://github.com/shuoGG1239/QCandyUi</a></li>
+</ul>
+<ul>
+<li>pip install QCandyUi</li>
+<li>仅需在需要美化的窗口类上加上@colorful装饰器即可</li>
+<li>也可以调用CandyWindow.creatWindow()返回经美化的QWidget (推荐用这种)</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/11/qcandyui/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -504,7 +497,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 

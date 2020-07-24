@@ -146,6 +146,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/06/21/pixiv_spider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ShuoGG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShuoGG's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/21/pixiv_spider/" class="post-title-link" itemprop="url">go-爬点Pixiv画师图</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-21 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-21T00:00:00+08:00">2020-06-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>刚好需要某个画师的插画, 故写了个简单无需登录的爬图工具</li>
+<li>根据Pixiv画师ID, 爬完直接保存在当前目录的</li>
+</ul>
+
+
+<ul>
+<li>代码很简单, 就100多行</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/21/pixiv_spider/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/06/07/go_and_epoll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -361,7 +434,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/05/05/clion_stm32/">
+    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/05/10/easyscreenshot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -375,7 +448,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/clion_stm32/" class="post-title-link" itemprop="url">Jetbrains Clion官方支持了Stm32的项目搭建, 说下感想</a>
+            <a href="/2020/05/10/easyscreenshot/" class="post-title-link" itemprop="url">Py小玩具-简易截图</a>
         </h2>
 
         <div class="post-meta">
@@ -385,7 +458,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-05T00:00:00+08:00">2020-05-05</time>
+              <time title="创建时间：2020-05-10 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-10T00:00:00+08:00">2020-05-10</time>
             </span>
 
           
@@ -400,90 +473,17 @@
 
       
           <ul>
-<li>得知Clion 2019.1之后的版本官方直接支持Stm32项目的创建, 遂怀揣激动之心准备一试…<br> </li>
+<li>有时没开微信或QQ的时候想立即截个图啥的挺蛋疼的, 故自己捣鼓一个</li>
+<li>简单干净快速, 无界面, 运行即截图</li>
+<li></li>
 </ul>
 <ul>
-<li>照着别人的教程, 一顿操作猛如虎, 一会捣鼓<code>OpenOCD</code>, 一会捣鼓<code>arm-none-eabi-gcc</code>… …说实话, 过程挺麻烦的, 会遇到一些坑</li>
-<li>手头上只有一块老stm32的核心板还有一个Jlink, 烧写调试也只能靠Jlink. 结果捣鼓了老半天, Jlink这块没办法打通, 即没办法用Jlink愉快地Debug, 遂放弃</li>
+<li>运行<code>easyshot.py</code>直接开启区域截图, 截完图自动保存到桌面, 然后退出进程</li>
+<li>截图的时候框选完区域后可以<code>双击</code>或<code>Enter</code>完成截图, 中途可以按<code>Esc</code>放弃截图</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/05/clion_stm32/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuogg1239.github.io/2020/05/05/redis_ae/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="ShuoGG">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShuoGG's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/redis_ae/" class="post-title-link" itemprop="url">Redis源码阅读-事件模型ae</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-05T00:00:00+08:00">2020-05-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>src/ae.c</li>
-</ul>
-<ul>
-<li><code>src/ae.c</code>下的<code>void aeMain(aeEventLoop *eventLoop)</code>函数; 推荐从这个函数开始阅读</li>
-<li>我们着重看下<code>aeMain</code>里面<code>aeProcessEvents(eventLoop, AE_ALL_EVENTS)</code>做了什么; 这里我们留意一下里面的<code>aeApiPoll</code>函数, 该函数用于<code>获取可执行的事件</code>, 获取之后在下面的for循环中处理事件, 执行事件处理器<code>fe-&gt;rfileProc(eventLoop,fd,fe-&gt;clientData,mask)</code></li>
-<li><code>aeApiPoll</code>函数是ae模块提供的一个接口, 在<code>ae_epoll.c</code> <code>ae_kqueue.c</code> <code>ae_select.c</code> <code>ae_evport.c</code>都做了相应的具体实现, 也是所谓<code>IO多路复用</code>各平台的具体实现, 目的为了兼容不同平台</li>
-<li>备注: 也许你会好奇为啥<code>IO多路复用</code>没有<code>iocp</code>的实现难道windows就没人权吗, 其实redis的官方版本是不支持windows的, windows版本在<code>https://github.com/microsoftarchive/redis</code>由微软团队自己维护, 里面就有<code>ae_wsiocp.c</code>即<code>iocp</code>版的实现</li>
-<li>通常说的redis的<code>reactor模型(反应堆)</code>其实说的就是<code>aeMain</code>的大循环中<code>aeProcessEvents</code>做的那些事情: <code>监听网络连接的FD的文件事件---&gt; 获取事件---&gt; 执行事件回调</code></li>
-<li>剩下具体细节不多赘述, 顺着思路看源码即可</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/05/redis_ae/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/easyscreenshot/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -506,7 +506,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -574,7 +574,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -609,7 +609,7 @@
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-bell"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ShuoGG</span>
 </div>
