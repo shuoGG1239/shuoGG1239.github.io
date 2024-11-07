@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://shuoGG1239.github.io/2019/03/31/tcpudp_tool/</loc>
-    <lastmod>2020-07-01</lastmod>
-  </url>
-  <url>
     <loc>https://shuoGG1239.github.io/2018/07/06/pyinstaller_keng/</loc>
     <lastmod>2020-07-01</lastmod>
   </url>
@@ -13,7 +9,7 @@
     <lastmod>2020-07-01</lastmod>
   </url>
   <url>
-    <loc>https://shuoGG1239.github.io/2020/06/21/pixiv_spider/</loc>
+    <loc>https://shuoGG1239.github.io/2019/03/31/tcpudp_tool/</loc>
     <lastmod>2020-07-01</lastmod>
   </url>
   <url>
@@ -22,6 +18,10 @@
   </url>
   <url>
     <loc>https://shuoGG1239.github.io/2019/06/30/paint2sketch/</loc>
+    <lastmod>2020-07-01</lastmod>
+  </url>
+  <url>
+    <loc>https://shuoGG1239.github.io/2020/06/21/pixiv_spider/</loc>
     <lastmod>2020-07-01</lastmod>
   </url>
   <url>
@@ -45,11 +45,11 @@
     <lastmod>2020-06-17</lastmod>
   </url>
   <url>
-    <loc>https://shuoGG1239.github.io/2020/05/05/redis_ae/</loc>
+    <loc>https://shuoGG1239.github.io/2020/06/06/otp/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>
   <url>
-    <loc>https://shuoGG1239.github.io/2020/06/06/otp/</loc>
+    <loc>https://shuoGG1239.github.io/2020/05/05/redis_ae/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>
   <url>
