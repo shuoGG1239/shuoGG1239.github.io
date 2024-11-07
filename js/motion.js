@@ -47,7 +47,7 @@ NexT.motion.middleWares = {
         e: element,
         p: {translateX},
         o: {
-          duration     : 300,
+          duration     : 150,
           sequenceQueue: false
         }
       };
