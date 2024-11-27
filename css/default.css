@@ -10812,6 +10812,7 @@ article.article .article-meta {
   margin-bottom: 0.5rem;
 }
 article.article .content {
+  font-weight: 600;
   word-wrap: break-word;
   font-size: 1.1rem;
 }
