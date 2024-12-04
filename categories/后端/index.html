@@ -38,15 +38,51 @@
 <li>流程: client收到Goaway -&gt; client主动关闭http2连接 -&gt; channel变为IDLE -&gt; 用户发起新请求 -&gt; 创建新连接 -&gt; channel变为CONNECTING</li>
 <li>另外GoAway是实现优雅关闭的基石, 因为是client主动关闭(不同于服务端关闭), 可以避免很多无效的请求 </li>
 <li>源码: <ul>
-<li>google.golang.org&#x2F;grpc&#x2F;clientconn.go: errConnDrain (drain是接收到goaway后的连接状态)</li>
-<li>google.golang.org&#x2F;grpc&#x2F;internal&#x2F;transport&#x2F;http2_client.go: func (t *http2Client) Close(err error)</li>
-<li>google.golang.org&#x2F;grpc&#x2F;internal&#x2F;transport&#x2F;http2_client.go: func (t *http2Client) handleGoAway(f *http2.GoAwayFrame)<ul>
-<li>里面的 t.onClose(t.goAwayReason)的onClose在”grpc&#x2F;clientconn.go&#x2F;addrConn createTransport”里面定义的:</li>
+<li>google.golang.org/grpc/clientconn.go: errConnDrain (drain是接收到goaway后的连接状态)</li>
+<li>google.golang.org/grpc/internal/transport/http2_client.go: func (t *http2Client) Close(err error)</li>
+<li>google.golang.org/grpc/internal/transport/http2_client.go: func (t <em>http2Client) handleGoAway(f </em>http2.GoAwayFrame)<ul>
+<li>里面的 t.onClose(t.goAwayReason)的onClose在”grpc/clientconn.go/addrConn createTransport”里面定义的:</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-26T16:00:00.000Z" title="2022/3/27 00:00:00">2022-03-27</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/">go源码阅读:database/sql包</a></p><div class="content"><ul>
+</ul></div><a class="article-more button is-small is-size-7" href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-24T16:00:00.000Z" title="2023/4/25 00:00:00">2023-04-25</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/">go源码阅读:TLS handshake</a></p><div class="content"><ul>
+<li><p>tls/handshake_server.go: serverHandshakeState</p>
+</li>
+<li><p>tls/common.go: Conn.PeerCertificates</p>
+</li>
+<li><p>tls/handshake_client.go: doFullHandshake:</p>
+<ul>
+<li>handshake读取到的certificateMsg最终会解析后赋值给peerCertificates</li>
+<li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc5246#section-7.4">rfc5246-Handshake Protocol</a></li>
+</ul>
+</li>
+<li><p>tls/handshake_client.go: clientHandshake</p>
+<ul>
+<li>makeClientHello</li>
+<li>loadSession : 会生成sessionID</li>
+<li>writeRecord : 将ClientHello发送给server</li>
+<li>readHandshake: 等server回复</li>
+</ul>
+</li>
+<li><p>tls/handshake_server.go: serverHandshake</p>
+<ul>
+<li>readClientHello</li>
+<li>processClientHello</li>
+<li>pickCipherSuite</li>
+<li>doFullHandshake</li>
+<li>establishKeys</li>
+<li>readFinished</li>
+<li>sendSessionTicket</li>
+<li>sendFinished</li>
+</ul>
+</li>
+<li><p>tls.Conn: handlePostHandshakeMessage/handleKeyUpdate: KeyUpdate指的就是tls最后的那个对称密钥(变量名叫<code>trafficSecret</code>)</p>
+</li>
+</ul>
+<ul>
+<li>tls.Conn实现了net.Conn接口, 在Write和Read包裹了一层handShake, 后面的读写也是带了加密的(readRecordOrCCS)</li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-26T16:00:00.000Z" title="2022/3/27 00:00:00">2022-03-27</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/">go源码阅读:database/sql包</a></p><div class="content"><ul>
 <li><code>database/sql</code>最主要还是实现了连接池逻辑</li>
 <li>go源码版本: v1.16</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/golang/go/tree/go1.16.6/src/database/sql">https://github.com/golang/go/tree/go1.16.6/src/database/sql</a></li>
@@ -74,26 +110,15 @@
 <li>否则丢到连接池freeConn中</li>
 </ul>
 </li>
-<li><p>清理线程(connectionCleaner):</p>
-<ul>
-<li>SetConnMaxLifetime,SetConnMaxIdleTime时才会去起唯一的一条清理线程</li>
-<li>清理线程定期清理连接池freeConn的连接, 根据maxLifetime和createAt清理, 也根据maxIdleTime和returnedAt清理</li>
-<li>有趣的是清理线程并不理会MaxOpen和MaxIdleConns是多少, 只关注MaxLifetime和MaxIdleTime, 反正过期了就清理</li>
-</ul>
-</li>
-<li><p>sql执行方法如Query,Exec,Ping等, 都会先去调conn获取连接, 再用其连接执行sql, 最后将putConnDBLocked(conn), (query是等rows全部scan完close再putConnDBLocked(conn))</p>
-</li>
-<li><p>关于resetSession最终的去处, 总的来说就是reset了个寂寞, 最终居然只是<code>conn.SetReadDeadline(time.Time&#123;&#125;)</code>? </p>
-</li>
 </ul></div><a class="article-more button is-small is-size-7" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-19T16:00:00.000Z" title="2022/3/20 00:00:00">2022-03-20</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/20/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_net-http-transport/">go源码阅读:net/http的Transport</a></p><div class="content"><ul>
 <li><code>http.Transport</code>这样的高频使用模块, 源码肯定得看看</li>
 <li>go源码版本: v1.16</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/golang/go/blob/go1.16.6/src/net/http/transport.go">https://github.com/golang/go/blob/go1.16.6/src/net/http/transport.go</a></li>
 </ul>
 <ul>
-<li><p>Transport是RoundTripper接口的实现: func RoundTrip(req *Request) (*Response, error)</p>
+<li><p>Transport是RoundTripper接口的实现: func RoundTrip(req <em>Request) (</em>Response, error)</p>
 </li>
-<li><p>Transport对外只提供方法: func RoundTrip(req *Request) (*Response, error)</p>
+<li><p>Transport对外只提供方法: func RoundTrip(req <em>Request) (</em>Response, error)</p>
 </li>
 <li><p>Transport的内部对象idleLRU connLRU写得不错, 简单实现了LRU</p>
 </li>
@@ -103,11 +128,11 @@
 </li>
 <li><p>queueForIdleConn: 根据请求的connectMethodKey从t.idleConn获取一个[]*persistConn切片， 并从切片中，根据算法获取一个有效的空闲连接。如果未获取到空闲连接，则将wantConn结构体放入t.idleConnWait[w.key]等待队列</p>
 </li>
-<li><p>连接释放逻辑在 (t *Transport) tryPutIdleConn(pconn *persistConn)</p>
+<li><p>连接释放逻辑在 (t <em>Transport) tryPutIdleConn(pconn </em>persistConn)</p>
 <ul>
 <li>哪些情况才回去调 tryPutIdleConn:<ol>
 <li>大部分的异常情况</li>
-<li>responseBody read完: 代码详细见 case bodyEOF :&#x3D; &lt;-waitForBodyRead</li>
+<li>responseBody read完: 代码详细见 case bodyEOF := &lt;-waitForBodyRead</li>
 </ol>
 </li>
 </ul>
@@ -123,6 +148,7 @@
 </ol>
 </li>
 <li><p>dialConn里面这段代码是开启http2的核心</p>
+
 </li>
 </ul></div><a class="article-more button is-small is-size-7" href="/2022/03/20/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_net-http-transport/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-06-08T16:00:00.000Z" title="2021/6/9 00:00:00">2021-06-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/06/09/go%20module%E7%AC%94%E8%AE%B0%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">go module笔记与源码分析</a></p><div class="content"><ul>
 <li>零零散散的关于go module的笔记, 通过源码来理解这些点</li>
@@ -130,17 +156,16 @@
 <ul>
 <li>仓库位置: <a target="_blank" rel="noopener" href="https://github.com/golang/go/tree/go1.16.6/src/cmd/go/internal/modcmd">https://github.com/golang/go/tree/go1.16.6/src/cmd/go/internal/modcmd</a></li>
 <li>相对位置:<ul>
-<li>“cmd&#x2F;go&#x2F;internal&#x2F;modcmd”</li>
-<li>“cmd&#x2F;go&#x2F;internal&#x2F;modfetch”</li>
-<li>“cmd&#x2F;go&#x2F;internal&#x2F;modget”</li>
-<li>“cmd&#x2F;go&#x2F;internal&#x2F;modload”</li>
+<li><code>cmd/go/internal/modcmd</code></li>
+<li><code>cmd/go/internal/modfetch</code></li>
+<li><code>cmd/go/internal/modget</code></li>
+<li><code>cmd/go/internal/modload</code></li>
 </ul>
 </li>
 </ul></div><a class="article-more button is-small is-size-7" href="/2021/06/09/go%20module%E7%AC%94%E8%AE%B0%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-06-20T16:00:00.000Z" title="2020/6/21 00:00:00">2020-06-21</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/06/21/pixiv_spider/">go-爬点Pixiv画师图</a></p><div class="content"><ul>
 <li>刚好需要某个画师的插画, 故写了个简单无需登录的爬图工具</li>
 <li>根据Pixiv画师ID, 爬完直接保存在当前目录的</li>
 </ul>
-
 
 <ul>
 <li>代码很简单, 就100多行</li>
@@ -160,16 +185,16 @@
 <ul>
 <li>动态口令验证可以看作是服务端和客户端之间通过约定相同的算法来实现验证功能, 也即你在客户端看到的动态口令是客户端通过算法生成的无需请求服务端获取</li>
 </ul></div><a class="article-more button is-small is-size-7" href="/2020/06/06/otp/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-05-04T16:00:00.000Z" title="2020/5/5 00:00:00">2020-05-05</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/05/05/redis_ae/">Redis源码阅读-事件模型ae</a></p><div class="content"><ul>
-<li>src&#x2F;ae.c</li>
+<li>src/ae.c</li>
 </ul>
 <ul>
 <li><code>src/ae.c</code>下的<code>void aeMain(aeEventLoop *eventLoop)</code>函数; 推荐从这个函数开始阅读</li>
-<li>我们着重看下<code>aeMain</code>里面<code>aeProcessEvents(eventLoop, AE_ALL_EVENTS)</code>做了什么; 这里我们留意一下里面的<code>aeApiPoll</code>函数, 该函数用于<code>获取可执行的事件</code>, 获取之后在下面的for循环中处理事件, 执行事件处理器<code> fe-&gt;rfileProc(eventLoop,fd,fe-&gt;clientData,mask)</code></li>
+<li>我们着重看下<code>aeMain</code>里面<code>aeProcessEvents(eventLoop, AE_ALL_EVENTS)</code>做了什么; 这里我们留意一下里面的<code>aeApiPoll</code>函数, 该函数用于<code>获取可执行的事件</code>, 获取之后在下面的for循环中处理事件, 执行事件处理器<code>fe-&gt;rfileProc(eventLoop,fd,fe-&gt;clientData,mask)</code></li>
 <li><code>aeApiPoll</code>函数是ae模块提供的一个接口, 在<code>ae_epoll.c</code> <code>ae_kqueue.c</code> <code>ae_select.c</code> <code>ae_evport.c</code>都做了相应的具体实现, 也是所谓<code>IO多路复用</code>各平台的具体实现, 目的为了兼容不同平台</li>
 <li>备注: 也许你会好奇为啥<code>IO多路复用</code>没有<code>iocp</code>的实现难道windows就没人权吗, 其实redis的官方版本是不支持windows的, windows版本在<code>https://github.com/microsoftarchive/redis</code>由微软团队自己维护, 里面就有<code>ae_wsiocp.c</code>即<code>iocp</code>版的实现</li>
 <li>通常说的redis的<code>reactor模型(反应堆)</code>其实说的就是<code>aeMain</code>的大循环中<code>aeProcessEvents</code>做的那些事情: <code>监听网络连接的FD的文件事件---&gt; 获取事件---&gt; 执行事件回调</code></li>
 <li>剩下具体细节不多赘述, 顺着思路看源码即可</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2020/05/05/redis_ae/#more">阅读更多</a></article></div></div><div class="column column-left is-2-tablet is-2-desktop is-2-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-64x64 mx-auto mb-2"><img class="avatar is-rounded" src="/images/sys/avatar.jpg" alt="shuoGG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shuoGG</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">25</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">8</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ai/"><span class="level-start"><span class="level-item">Ai</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/PC%E7%AB%AF/"><span class="level-start"><span class="level-item">PC端</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/db/"><span class="level-start"><span class="level-item">db</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-11-26T16:00:00.000Z">2024-11-27</time></p><p class="title"><a href="/2024/11/27/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98icarus%E6%A0%B7%E5%BC%8F%E9%AD%94%E6%94%B9/">博客主题icarus样式魔改</a></p><p class="categories"><a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-05-21T16:00:00.000Z">2024-05-22</time></p><p class="title"><a href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">gh-ost源码分析</a></p><p class="categories"><a href="/categories/db/">db</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-08-01T16:00:00.000Z">2023-08-02</time></p><p class="title"><a href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/">grpc的goAway和keepalive</a></p><p class="categories"><a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-14T16:00:00.000Z">2023-04-15</time></p><p class="title"><a href="/2023/04/15/mongoDump%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">mongodb官方备份工具, MongoDump源码分析</a></p><p class="categories"><a href="/categories/db/">db</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-08T16:00:00.000Z">2023-04-09</time></p><p class="title"><a href="/2023/04/09/mongoShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Mongodb数据迁移:MongoShake源码阅读</a></p><p class="categories"><a href="/categories/db/">db</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/go/"><span class="tag">go</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grpc/"><span class="tag">grpc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ShuoGG&#039;s blog</a><p class="is-size-7"><span>&copy; 2024 ShuoGG</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+</ul></div><a class="article-more button is-small is-size-7" href="/2020/05/05/redis_ae/#more">阅读更多</a></article></div></div><div class="column column-left is-2-tablet is-2-desktop is-2-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-64x64 mx-auto mb-2"><img class="avatar is-rounded" src="/images/sys/avatar.jpg" alt="shuoGG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shuoGG</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">9</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ai/"><span class="level-start"><span class="level-item">Ai</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/PC%E7%AB%AF/"><span class="level-start"><span class="level-item">PC端</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/db/"><span class="level-start"><span class="level-item">db</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-11-26T16:00:00.000Z">2024-11-27</time></p><p class="title"><a href="/2024/11/27/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98icarus%E6%A0%B7%E5%BC%8F%E9%AD%94%E6%94%B9/">博客主题icarus样式魔改</a></p><p class="categories"><a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-05-21T16:00:00.000Z">2024-05-22</time></p><p class="title"><a href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">gh-ost源码分析</a></p><p class="categories"><a href="/categories/db/">db</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-08-01T16:00:00.000Z">2023-08-02</time></p><p class="title"><a href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/">grpc的goAway和keepalive</a></p><p class="categories"><a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-24T16:00:00.000Z">2023-04-25</time></p><p class="title"><a href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/">go源码阅读:TLS handshake</a></p><p class="categories"><a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-14T16:00:00.000Z">2023-04-15</time></p><p class="title"><a href="/2023/04/15/mongoDump%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">mongodb官方备份工具, MongoDump源码分析</a></p><p class="categories"><a href="/categories/db/">db</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/go/"><span class="tag">go</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grpc/"><span class="tag">grpc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tls/"><span class="tag">tls</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ShuoGG&#039;s blog</a><p class="is-size-7"><span>&copy; 2024 ShuoGG</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
