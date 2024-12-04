@@ -328,13 +328,6 @@
 
   
   <url>
-    <loc>https://shuogg1239.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2024-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://shuogg1239.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2024-12-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -343,6 +336,13 @@
   
   <url>
     <loc>https://shuogg1239.github.io/categories/PC%E7%AB%AF/</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://shuogg1239.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2024-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
