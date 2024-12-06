@@ -29,49 +29,50 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">go</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-05-21T16:00:00.000Z" title="2024/5/22 00:00:00">2024-05-22</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">gh-ost源码分析</a></p><div class="content"><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">go</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-05-21T16:00:00.000Z" title="2024/5/22 00:00:00">2024-05-22</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">gh-ost源码分析</a></p><div class="content">
+<ul>
 <li>之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记</li>
 </ul>
+
 <ul>
-<li>源码版本: </li>
+<li>源码版本:</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/github/gh-ost">https://github.com/github/gh-ost</a></li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-08-01T16:00:00.000Z" title="2023/8/2 00:00:00">2023-08-02</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/">grpc的goAway和keepalive</a></p><div class="content"><ul>
+</ul></div><a class="article-more button is-small is-size-7" href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-08-01T16:00:00.000Z" title="2023/8/2 00:00:00">2023-08-02</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/">grpc的goAway和keepalive</a></p><div class="content">
+<ul>
 <li>虽是Http2的东西, 但也可以通过grpc的源码来侧面加深下理解</li>
 </ul>
+
 <ul>
 <li>告诉客户端, 服务端准备关闭了, 本连接不要发新请求过来了 (发一半的请求还是会处理完的)</li>
 <li>当client收到这个包之后就会主动关闭连接。下次需要发送数据时，就会重新建立连接</li>
 <li>流程: client收到Goaway -&gt; client主动关闭http2连接 -&gt; channel变为IDLE -&gt; 用户发起新请求 -&gt; 创建新连接 -&gt; channel变为CONNECTING</li>
-<li>另外GoAway是实现优雅关闭的基石, 因为是client主动关闭(不同于服务端关闭), 可以避免很多无效的请求 </li>
-<li>源码: <ul>
-<li>google.golang.org&#x2F;grpc&#x2F;clientconn.go: errConnDrain (drain是接收到goaway后的连接状态)</li>
-<li>google.golang.org&#x2F;grpc&#x2F;internal&#x2F;transport&#x2F;http2_client.go: func (t *http2Client) Close(err error)</li>
-<li>google.golang.org&#x2F;grpc&#x2F;internal&#x2F;transport&#x2F;http2_client.go: func (t *http2Client) handleGoAway(f *http2.GoAwayFrame)<ul>
-<li>里面的 t.onClose(t.goAwayReason)的onClose在”grpc&#x2F;clientconn.go&#x2F;addrConn createTransport”里面定义的:</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-24T16:00:00.000Z" title="2023/4/25 00:00:00">2023-04-25</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/">go源码阅读:TLS handshake</a></p><div class="content"><ul>
-<li><p>tls&#x2F;handshake_server.go: serverHandshakeState</p>
-</li>
-<li><p>tls&#x2F;common.go: Conn.PeerCertificates</p>
-</li>
-<li><p>tls&#x2F;handshake_client.go: doFullHandshake:</p>
+<li>另外GoAway是实现优雅关闭的基石, 因为是client主动关闭(不同于服务端关闭), 可以避免很多无效的请求</li>
+<li>源码:
+<ul>
+<li>google.golang.org/grpc/clientconn.go: errConnDrain (drain是接收到goaway后的连接状态)</li>
+<li>google.golang.org/grpc/internal/transport/http2_client.go: func (t *http2Client) Close(err error)</li>
+<li>google.golang.org/grpc/internal/transport/http2_client.go: func (t <em>http2Client) handleGoAway(f </em>http2.GoAwayFrame)
+<ul>
+<li>里面的 t.onClose(t.goAwayReason)的onClose在"grpc/clientconn.go/addrConn createTransport"里面定义的:</li>
+</ul></li>
+</ul></li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2023/08/02/grpc%E7%9A%84goAway%E5%92%8Ckeepalive/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-24T16:00:00.000Z" title="2023/4/25 00:00:00">2023-04-25</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/">go源码阅读:TLS handshake</a></p><div class="content">
+<ul>
+<li><p>tls/handshake_server.go: serverHandshakeState</p></li>
+<li><p>tls/common.go: Conn.PeerCertificates</p></li>
+<li><p>tls/handshake_client.go: doFullHandshake:</p>
 <ul>
 <li>handshake读取到的certificateMsg最终会解析后赋值给peerCertificates</li>
 <li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc5246#section-7.4">rfc5246-Handshake Protocol</a></li>
-</ul>
-</li>
-<li><p>tls&#x2F;handshake_client.go: clientHandshake</p>
+</ul></li>
+<li><p>tls/handshake_client.go: clientHandshake</p>
 <ul>
 <li>makeClientHello</li>
 <li>loadSession : 会生成sessionID</li>
 <li>writeRecord : 将ClientHello发送给server</li>
 <li>readHandshake: 等server回复</li>
-</ul>
-</li>
-<li><p>tls&#x2F;handshake_server.go: serverHandshake</p>
+</ul></li>
+<li><p>tls/handshake_server.go: serverHandshake</p>
 <ul>
 <li>readClientHello</li>
 <li>processClientHello</li>
@@ -81,142 +82,134 @@
 <li>readFinished</li>
 <li>sendSessionTicket</li>
 <li>sendFinished</li>
+</ul></li>
+<li><p>tls.Conn: handlePostHandshakeMessage/handleKeyUpdate: KeyUpdate指的就是tls最后的那个对称密钥(变量名叫<code>trafficSecret</code>)</p></li>
 </ul>
-</li>
-<li><p>tls.Conn: handlePostHandshakeMessage&#x2F;handleKeyUpdate: KeyUpdate指的就是tls最后的那个对称密钥(变量名叫<code>trafficSecret</code>)</p>
-</li>
-</ul>
+
 <ul>
 <li>tls.Conn实现了net.Conn接口, 在Write和Read包裹了一层handShake, 后面的读写也是带了加密的(readRecordOrCCS)</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-14T16:00:00.000Z" title="2023/4/15 00:00:00">2023-04-15</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/15/mongoDump%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">mongodb官方备份工具, MongoDump源码分析</a></p><div class="content"><ul>
+</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/25/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_tls-handshake/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-14T16:00:00.000Z" title="2023/4/15 00:00:00">2023-04-15</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/15/mongoDump%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">mongodb官方备份工具, MongoDump源码分析</a></p><div class="content">
+<ul>
 <li>最近用到了该模块, 期间看了源码, 这里顺便做下笔记</li>
 <li>本文前几小节讲MongoDump的运转流程, 后几小节讲代码方面的技术细节</li>
 <li>源码版本: 100.6.1</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/mongodb/mongo-tools/blob/100.6.1/mongodump">https://github.com/mongodb/mongo-tools/blob/100.6.1/mongodump</a></li>
 </ul>
+
 <ul>
-<li><p>备份逻辑就在MongoDump的Dump方法 (mongodump&#x2F;mongodump.go&#x2F;MongoDump.Dump)</p>
-</li>
+<li><p>备份逻辑就在MongoDump的Dump方法 (mongodump/mongodump.go/MongoDump.Dump)</p></li>
 <li><p>Dump主要分4步:</p>
-<ol>
+<ol type="1">
 <li>各种初始化工作</li>
 <li>备份metaData, index, users, roles, version 等基础数据</li>
 <li>备份collections</li>
 <li>备份oplog</li>
-</ol>
-</li>
-<li><p>后面会经常提到<code>Intent</code>, 这是MongoDump自己的一个抽象概念, 可以简单理解为备份任务单元, 例如一个collection的备份对应一个Intent, oplog的备份对应一个Intent等等; 在阅读源码时你可以将<code>Intent</code>在脑海里替换成<code>Task</code>. 关于<code>Intent</code>详见本文后面章节</p>
-</li>
-<li><p>核心逻辑见以下源码及注释(为了方便阅读, 这里我删减了些不关键的逻辑):</p>
-</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/15/mongoDump%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-08T16:00:00.000Z" title="2023/4/9 00:00:00">2023-04-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/09/mongoShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Mongodb数据迁移:MongoShake源码阅读</a></p><div class="content"><ul>
+</ol></li>
+<li><p>后面会经常提到<code>Intent</code>, 这是MongoDump自己的一个抽象概念, 可以简单理解为备份任务单元, 例如一个collection的备份对应一个Intent, oplog的备份对应一个Intent等等; 在阅读源码时你可以将<code>Intent</code>在脑海里替换成<code>Task</code>. 关于<code>Intent</code>详见本文后面章节</p></li>
+<li><p>核心逻辑见以下源码及注释(为了方便阅读, 这里我删减了些不关键的逻辑):</p></li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/15/mongoDump%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-08T16:00:00.000Z" title="2023/4/9 00:00:00">2023-04-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/09/mongoShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Mongodb数据迁移:MongoShake源码阅读</a></p><div class="content">
+<ul>
 <li>近期用到了MongoShake做数据迁移, 顺便看看源码, 本篇为阅读源码的笔记</li>
 <li>本文只讲数据迁移这块相关的</li>
 </ul>
+
 <ul>
 <li>架构 <a target="_blank" rel="noopener" href="https://github.com/alibaba/MongoShake/blob/develop/resources/dataflow.png">mongoshake-arch</a></li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/09/mongoShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-08T16:00:00.000Z" title="2022/7/9 00:00:00">2022-07-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/09/redisShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Redis数据迁移:RedisShake源码阅读</a></p><div class="content"><ul>
+</ul></div><a class="article-more button is-small is-size-7" href="/2023/04/09/mongoShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-08T16:00:00.000Z" title="2022/7/9 00:00:00">2022-07-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/09/redisShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Redis数据迁移:RedisShake源码阅读</a></p><div class="content">
+<ul>
 <li>近期用到了RedisShake做数据迁移, 源码代码量不多于是看了一遍, 本篇为阅读源码的笔记</li>
 <li>本篇重点讲解RedisShake的数据迁移功能, 其他几个功能dump,decode,restore,rump只简单提及</li>
 </ul>
+
 <ul>
 <li>原理用一句话概述就是: 假装成源Redis的slave, 利用<code>pSync</code>接收来自源Redis的数据再回放到目标Redis</li>
-<li>redisShake架构图cluster版<br></li>
-<li>redisShake架构图standalone版<br></li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2022/07/09/redisShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-26T16:00:00.000Z" title="2022/3/27 00:00:00">2022-03-27</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/">go源码阅读:database/sql包</a></p><div class="content"><ul>
+<li>redisShake架构图cluster版 </li>
+<li>redisShake架构图standalone版 </li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2022/07/09/redisShake%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-26T16:00:00.000Z" title="2022/3/27 00:00:00">2022-03-27</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/">go源码阅读:database/sql包</a></p><div class="content">
+<ul>
 <li><code>database/sql</code>最主要还是实现了连接池逻辑</li>
 <li>go源码版本: v1.16</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/golang/go/tree/go1.16.6/src/database/sql">https://github.com/golang/go/tree/go1.16.6/src/database/sql</a></li>
 </ul>
+
 <ul>
 <li><p>Open会返回DB对象并开启一条connectionOpener线程</p>
 <ul>
-<li>connectionOpener主要处理下面提到的”当前连接数大于maxOpen会陷入等待”的连接资源请求</li>
-</ul>
-</li>
+<li>connectionOpener主要处理下面提到的"当前连接数大于maxOpen会陷入等待"的连接资源请求</li>
+</ul></li>
 <li><p>DB的核心方法: conn(ctx context.Context, strategy connReuseStrategy) (*driverConn, error)</p>
 <ul>
 <li>优先返回连接池里的连接</li>
 <li>当前连接数大于maxOpen会陷入等待, 等待取决于ctx, 也即由调用方控制</li>
 <li>其余情况则返回一个新连接</li>
-</ul>
-</li>
-<li><p>DB的连接池: freeConn []*driverConn</p>
-</li>
+</ul></li>
+<li><p>DB的连接池: freeConn []*driverConn</p></li>
 <li><p>DB的核心方法: putConnDBLocked(conn, err) bool</p>
 <ul>
 <li>如果当前连接数大于maxOpen则直接返回false, 上层看到false则直接关闭该连接conn</li>
 <li>优先满足正在等待连接资源请求的(connRequests是一个map,可以看出请求连接资源并无优先级的说法)</li>
 <li>如果MaxIdleConns &lt; len(freeConn), 即连接池满了, 则直接返回false, 上层看到false则直接关闭该连接conn</li>
 <li>否则丢到连接池freeConn中</li>
-</ul>
-</li>
+</ul></li>
 <li><p>清理线程(connectionCleaner):</p>
 <ul>
 <li>SetConnMaxLifetime,SetConnMaxIdleTime时才会去起唯一的一条清理线程</li>
 <li>清理线程定期清理连接池freeConn的连接, 根据maxLifetime和createAt清理, 也根据maxIdleTime和returnedAt清理</li>
 <li>有趣的是清理线程并不理会MaxOpen和MaxIdleConns是多少, 只关注MaxLifetime和MaxIdleTime, 反正过期了就清理</li>
-</ul>
-</li>
-<li><p>sql执行方法如Query,Exec,Ping等, 都会先去调conn获取连接, 再用其连接执行sql, 最后将putConnDBLocked(conn), (query是等rows全部scan完close再putConnDBLocked(conn))</p>
-</li>
-<li><p>关于resetSession最终的去处, 总的来说就是reset了个寂寞, 最终居然只是<code>conn.SetReadDeadline(time.Time&#123;&#125;)</code>? </p>
-</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-19T16:00:00.000Z" title="2022/3/20 00:00:00">2022-03-20</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/20/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_net-http-transport/">go源码阅读:net/http的Transport</a></p><div class="content"><ul>
+</ul></li>
+<li><p>sql执行方法如Query,Exec,Ping等, 都会先去调conn获取连接, 再用其连接执行sql, 最后将putConnDBLocked(conn), (query是等rows全部scan完close再putConnDBLocked(conn))</p></li>
+<li><p>关于resetSession最终的去处, 总的来说就是reset了个寂寞, 最终居然只是<code>conn.SetReadDeadline(time.Time&#123;&#125;)</code>? </p><p></p></li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2022/03/27/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_database-sql%E5%8C%85/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-03-19T16:00:00.000Z" title="2022/3/20 00:00:00">2022-03-20</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/20/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_net-http-transport/">go源码阅读:net/http的Transport</a></p><div class="content">
+<ul>
 <li><code>http.Transport</code>这样的高频使用模块, 源码肯定得看看</li>
 <li>go源码版本: v1.16</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/golang/go/blob/go1.16.6/src/net/http/transport.go">https://github.com/golang/go/blob/go1.16.6/src/net/http/transport.go</a></li>
 </ul>
+
 <ul>
-<li><p>Transport是RoundTripper接口的实现: func RoundTrip(req *Request) (*Response, error)</p>
-</li>
-<li><p>Transport对外只提供方法: func RoundTrip(req *Request) (*Response, error)</p>
-</li>
-<li><p>Transport的内部对象idleLRU connLRU写得不错, 简单实现了LRU</p>
-</li>
-<li><p>http.Client就是在Tranport上简单封装一层</p>
-</li>
-<li><p>Transport就是一个连接池, 池子里面放着persistConn连接对象(idleConn map[connectMethodKey][]*persistConn)</p>
-</li>
-<li><p>queueForIdleConn: 根据请求的connectMethodKey从t.idleConn获取一个[]*persistConn切片， 并从切片中，根据算法获取一个有效的空闲连接。如果未获取到空闲连接，则将wantConn结构体放入t.idleConnWait[w.key]等待队列</p>
-</li>
-<li><p>连接释放逻辑在 (t *Transport) tryPutIdleConn(pconn *persistConn)</p>
+<li><p>Transport是RoundTripper接口的实现: func RoundTrip(req <em>Request) (</em>Response, error)</p></li>
+<li><p>Transport对外只提供方法: func RoundTrip(req <em>Request) (</em>Response, error)</p></li>
+<li><p>Transport的内部对象idleLRU connLRU写得不错, 简单实现了LRU</p></li>
+<li><p>http.Client就是在Tranport上简单封装一层</p></li>
+<li><p>Transport就是一个连接池, 池子里面放着persistConn连接对象(idleConn map[connectMethodKey][]*persistConn)</p></li>
+<li><p>queueForIdleConn: 根据请求的connectMethodKey从t.idleConn获取一个[]*persistConn切片， 并从切片中，根据算法获取一个有效的空闲连接。如果未获取到空闲连接，则将wantConn结构体放入t.idleConnWait[w.key]等待队列</p></li>
+<li><p>连接释放逻辑在 (t <em>Transport) tryPutIdleConn(pconn </em>persistConn)</p>
 <ul>
-<li>哪些情况才回去调 tryPutIdleConn:<ol>
+<li>哪些情况才回去调 tryPutIdleConn:
+<ol type="1">
 <li>大部分的异常情况</li>
-<li>responseBody read完: 代码详细见 case bodyEOF :&#x3D; &lt;-waitForBodyRead</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>dialConnFor: 会调用t.dialConn获取一个真正的*persistConn。并将这个连接传递给w, 如果w已经获取到了连接，则会传递失败，此时调用t.putOrCloseIdleConn将连接放回空闲连接池。</p>
-</li>
-<li><p>dialConn: </p>
-<ol>
-<li>调用t.dial(ctx, “tcp”, cm.addr())创建TCP连接并将其赋予刚new的persistConn</li>
+<li>responseBody read完: 代码详细见 case bodyEOF := &lt;-waitForBodyRead</li>
+</ol></li>
+</ul></li>
+<li><p>dialConnFor: 会调用t.dialConn获取一个真正的*persistConn。并将这个连接传递给w, 如果w已经获取到了连接，则会传递失败，此时调用t.putOrCloseIdleConn将连接放回空闲连接池。</p></li>
+<li><p>dialConn:</p>
+<ol type="1">
+<li>调用t.dial(ctx, "tcp", cm.addr())创建TCP连接并将其赋予刚new的persistConn</li>
 <li>如果是https的请求，则对请求建立安全的tls传输通道</li>
 <li>为persistConn创建读写buffer，如果用户没有自定义读写buffer的大小，读写bufffer的大小默认为4096</li>
 <li>执行go pconn.readLoop()和go pconn.writeLoop()开启读写循环然后返回连接</li>
-</ol>
-</li>
-<li><p>dialConn里面这段代码是开启http2的核心</p>
-</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2022/03/20/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_net-http-transport/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-06-08T16:00:00.000Z" title="2021/6/9 00:00:00">2021-06-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/06/09/go%20module%E7%AC%94%E8%AE%B0%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">go module笔记与源码分析</a></p><div class="content"><ul>
+</ol></li>
+<li><p>dialConn里面这段代码是开启http2的核心 </p><p></p></li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2022/03/20/go%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_net-http-transport/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-06-08T16:00:00.000Z" title="2021/6/9 00:00:00">2021-06-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/06/09/go%20module%E7%AC%94%E8%AE%B0%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">go module笔记与源码分析</a></p><div class="content">
+<ul>
 <li>零零散散的关于go module的笔记, 通过源码来理解这些点</li>
 </ul>
+
 <ul>
 <li>仓库位置: <a target="_blank" rel="noopener" href="https://github.com/golang/go/tree/go1.16.6/src/cmd/go/internal/modcmd">https://github.com/golang/go/tree/go1.16.6/src/cmd/go/internal/modcmd</a></li>
-<li>相对位置:<ul>
+<li>相对位置:
+<ul>
 <li><code>cmd/go/internal/modcmd</code></li>
 <li><code>cmd/go/internal/modfetch</code></li>
 <li><code>cmd/go/internal/modget</code></li>
 <li><code>cmd/go/internal/modload</code></li>
-</ul>
-</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2021/06/09/go%20module%E7%AC%94%E8%AE%B0%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-06-20T16:00:00.000Z" title="2020/6/21 00:00:00">2020-06-21</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/06/21/pixiv_spider/">go-爬点Pixiv画师图</a></p><div class="content"><ul>
+</ul></li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2021/06/09/go%20module%E7%AC%94%E8%AE%B0%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-06-20T16:00:00.000Z" title="2020/6/21 00:00:00">2020-06-21</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/06/21/pixiv_spider/">go-爬点Pixiv画师图</a></p><div class="content">
+<ul>
 <li>刚好需要某个画师的插画, 故写了个简单无需登录的爬图工具</li>
 <li>根据Pixiv画师ID, 爬完直接保存在当前目录的</li>
 </ul>
+
 
 
 <ul>

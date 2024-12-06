@@ -29,59 +29,80 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">python</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-07-29T16:00:00.000Z" title="2024/7/30 00:00:00">2024-07-30</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2024/07/30/QQ%E6%9C%BA%E5%99%A8%E4%BA%BAqqbot%E6%8A%8A%E7%8E%A9/">QQ机器人qqbot把玩</a></p><div class="content"><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">python</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-07-29T16:00:00.000Z" title="2024/7/30 00:00:00">2024-07-30</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2024/07/30/QQ%E6%9C%BA%E5%99%A8%E4%BA%BAqqbot%E6%8A%8A%E7%8E%A9/">QQ机器人qqbot把玩</a></p><div class="content">
+<ul>
 <li>都2024年7月了, 有些sdk的最新更新时间还停留在去年, 最新的也就<code>python</code>版本, 这里我用的是<code>botpy</code></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/tencent-connect/botpy">https://github.com/tencent-connect/botpy</a></li>
 </ul>
+
 <ul>
-<li><p><code>botpy</code>目前这个版本还没支持<code>QQ群</code>发base64图的功能, 这意味着必须先把图送到图床才行, 麻烦! 翻阅接口文档我发现其实接口上已经是支持了,<br>但是所有语言的sdk没有一个支持就离谱</p>
-</li>
-<li><p>这时候需要魔改下<code>botpy</code>源码, 很简单, 找到<code>botpy/api.py</code>, 改下<code>post_group_file</code>这个方法, 加一个<code>file_data</code>的参数即可</p>
-</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2024/07/30/QQ%E6%9C%BA%E5%99%A8%E4%BA%BAqqbot%E6%8A%8A%E7%8E%A9/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-01-05T16:00:00.000Z" title="2024/1/6 00:00:00">2024-01-06</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/ai/">ai</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2024/01/06/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">梯度下降笔记</a></p><div class="content"><p>$$<br>\omega_{t+1} &#x3D; \omega_t - \alpha \nabla f(\omega_t)<br>$$</p>
+<li><p><code>botpy</code>目前这个版本还没支持<code>QQ群</code>发base64图的功能, 这意味着必须先把图送到图床才行, 麻烦! 翻阅接口文档我发现其实接口上已经是支持了, 但是所有语言的sdk没有一个支持就离谱</p></li>
+<li><p>这时候需要魔改下<code>botpy</code>源码, 很简单, 找到<code>botpy/api.py</code>, 改下<code>post_group_file</code>这个方法, 加一个<code>file_data</code>的参数即可</p></li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2024/07/30/QQ%E6%9C%BA%E5%99%A8%E4%BA%BAqqbot%E6%8A%8A%E7%8E%A9/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-01-05T16:00:00.000Z" title="2024/1/6 00:00:00">2024-01-06</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/ai/">ai</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2024/01/06/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">梯度下降笔记</a></p><div class="content">
+<p><span class="math display">\[
+\omega_{t+1} = \omega_t - \alpha \nabla f(\omega_t)
+\]</span></p>
 <ul>
-<li>$\alpha$为学习率</li>
-<li>$\nabla f(\omega_t)$为梯度</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2024/01/06/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-08-12T16:00:00.000Z" title="2023/8/13 00:00:00">2023-08-13</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/ai/">ai</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/08/13/danbooru%E7%88%AC%E5%9B%BE/">danbooru爬图</a></p><div class="content"><ul>
+<li><span class="math inline">\(\alpha\)</span>为学习率</li>
+<li><span class="math inline">\(\nabla f(\omega_t)\)</span>为梯度</li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2024/01/06/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-08-12T16:00:00.000Z" title="2023/8/13 00:00:00">2023-08-13</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/ai/">ai</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/08/13/danbooru%E7%88%AC%E5%9B%BE/">danbooru爬图</a></p><div class="content">
+<ul>
 <li>最近ai炼丹嫌找炼丹素材麻烦, 就写了个按<code>danbooru tag</code>爬图的脚本, 没什么第三方依赖, 想用直接copy去跑就行</li>
 </ul>
-<ol>
-<li>把脚本里面的<code>your_username</code>和<code>your_password</code>替换成你的danbooru账号密码(账号在<a target="_blank" rel="noopener" href="https://danbooru.donmai.us注册/">https://danbooru.donmai.us注册</a>)</li>
+
+<ol type="1">
+<li>把脚本里面的<code>your_username</code>和<code>your_password</code>替换成你的danbooru账号密码(账号在https://danbooru.donmai.us注册)</li>
 <li>main里面, 在<code>tag</code>填上要爬取的tag, <code>save_dir</code>为爬取的图片的保存路径</li>
 <li>如果需要通过代理爬取, 把<code>use_proxy</code>置为<code>True</code>, 然后改下<code>proxies</code>变量的代理地址即可</li>
-</ol></div><a class="article-more button is-small is-size-7" href="/2023/08/13/danbooru%E7%88%AC%E5%9B%BE/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-05-09T16:00:00.000Z" title="2020/5/10 00:00:00">2020-05-10</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/05/10/easyscreenshot/">Py小玩具-简易截图</a></p><div class="content"><ul>
+</ol></div><a class="article-more button is-small is-size-7" href="/2023/08/13/danbooru%E7%88%AC%E5%9B%BE/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-05-09T16:00:00.000Z" title="2020/5/10 00:00:00">2020-05-10</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/05/10/easyscreenshot/">Py小玩具-简易截图</a></p><div class="content">
+<ul>
 <li>有时没开微信或QQ的时候想立即截个图啥的挺蛋疼的, 故自己捣鼓一个</li>
 <li>简单干净快速, 无界面, 运行即截图</li>
 <li></li>
 </ul>
+
 <ul>
 <li>运行<code>easyshot.py</code>直接开启区域截图, 截完图自动保存到桌面, 然后退出进程</li>
 <li>截图的时候框选完区域后可以<code>双击</code>或<code>Enter</code>完成截图, 中途可以按<code>Esc</code>放弃截图</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2020/05/10/easyscreenshot/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-06-08T16:00:00.000Z" title="2019/6/9 00:00:00">2019-06-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2019/06/09/japinput/">Py小玩具-罗马转假名</a></p><div class="content"><ul>
-<li>罗马音转假名(平假片假), 简单好用…</li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2020/05/10/easyscreenshot/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-06-08T16:00:00.000Z" title="2019/6/9 00:00:00">2019-06-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2019/06/09/japinput/">Py小玩具-罗马转假名</a></p><div class="content">
+<ul>
+<li>罗马音转假名(平假片假), 简单好用...</li>
 <li>属于个人需求, 偶尔要敲一段假名, (日文输入法太笨重污染桌面干净的右下角) 算是用的比较频繁的一个自制玩具</li>
 </ul>
-<p></p></div><a class="article-more button is-small is-size-7" href="/2019/06/09/japinput/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-03-30T16:00:00.000Z" title="2019/3/31 00:00:00">2019-03-31</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2019/03/31/tcpudp_tool/">Py小玩具-Tcp&amp;Udp&amp;串口调试工具</a></p><div class="content"><ul>
+
+
+
+<ul>
+<li>无需联网</li>
+<li>除了长音符用了<code>yy</code>, 其余输入规则和主流的日文输入法差不多</li>
+<li>例子 </li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2019/06/09/japinput/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-03-30T16:00:00.000Z" title="2019/3/31 00:00:00">2019-03-31</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2019/03/31/tcpudp_tool/">Py小玩具-Tcp&amp;Udp&amp;串口调试工具</a></p><div class="content">
+<ul>
 <li>以前捣鼓嵌入式的时候写的, 就是那种网上搜就一大把的UDP+TCP+串口调试工具, 为了方便定制些功能于是自己搞了一个, 平时自己用, 功能没啥问题</li>
 </ul>
+
 <ul>
-<li>界面<br></li>
-<li>十分眼熟的那四种模式…Udp+TcpClient+TcpServer+串口通信<br></li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2019/03/31/tcpudp_tool/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-07-10T16:00:00.000Z" title="2018/7/11 00:00:00">2018-07-11</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/07/11/qcandyui/">快速美化PyQt应用--QCandyUi</a></p><div class="content"><ul>
+<li>界面 </li>
+<li>十分眼熟的那四种模式...Udp+TcpClient+TcpServer+串口通信 </li>
+</ul></div><a class="article-more button is-small is-size-7" href="/2019/03/31/tcpudp_tool/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-07-10T16:00:00.000Z" title="2018/7/11 00:00:00">2018-07-11</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/07/11/qcandyui/">快速美化PyQt应用--QCandyUi</a></p><div class="content">
+<ul>
 <li>快速美化PyQt应用</li>
 <li>项目地址: <a target="_blank" rel="noopener" href="https://github.com/shuoGG1239/QCandyUi">https://github.com/shuoGG1239/QCandyUi</a></li>
 </ul>
+
 <ul>
 <li>pip install QCandyUi</li>
 <li>仅需在需要美化的窗口类上加上@colorful装饰器即可</li>
 <li>也可以调用CandyWindow.creatWindow()返回经美化的QWidget (推荐用这种)</li>
-</ul></div><a class="article-more button is-small is-size-7" href="/2018/07/11/qcandyui/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-07-05T16:00:00.000Z" title="2018/7/6 00:00:00">2018-07-06</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/07/06/pyinstaller_keng/">总结Pyinstaller的坑及终极解决方法</a></p><div class="content"><ul>
-<li>下面是博主经测试的觉得坑比较少的环境搭配<ol>
+</ul></div><a class="article-more button is-small is-size-7" href="/2018/07/11/qcandyui/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-07-05T16:00:00.000Z" title="2018/7/6 00:00:00">2018-07-06</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/PC%E7%AB%AF/">PC端</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/07/06/pyinstaller_keng/">总结Pyinstaller的坑及终极解决方法</a></p><div class="content">
+<ul>
+<li>下面是博主经测试的觉得坑比较少的环境搭配
+<ol type="1">
 <li>Python3.4 + PyQt5.4 + Pyinstaller3.2.1</li>
 <li>Python3.5 + PyQt5.8 + Pyinstaller3.2.1</li>
-</ol>
-</li>
+</ol></li>
 </ul>
+
 <ul>
 <li>博主好几次用Pyinstaller遇到坑时都有考虑换工具如py2exe或cx-freeze之类的, 依旧无法解决 (最后还是用pyinstaller解决了)</li>
 <li>所以没必要换其他工具, pyinstaller就够了</li>

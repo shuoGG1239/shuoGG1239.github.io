@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>gh-ost源码分析 - ShuoGG&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ShuoGG&#039;s blog"><meta name="msapplication-TileImage" content="/images/sys/favicon-32x32-github.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ShuoGG&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记   源码版本:  源码仓库: https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;github&amp;#x2F;gh-ost"><meta property="og:type" content="blog"><meta property="og:title" content="gh-ost源码分析"><meta property="og:url" content="https://shuogg1239.github.io/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><meta property="og:site_name" content="ShuoGG&#039;s blog"><meta property="og:description" content="之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记   源码版本:  源码仓库: https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;github&amp;#x2F;gh-ost"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://shuogg1239.github.io/img/og_image.png"><meta property="article:published_time" content="2024-05-21T16:00:00.000Z"><meta property="article:modified_time" content="2024-05-22T11:04:45.000Z"><meta property="article:author" content="ShuoGG"><meta property="article:tag" content="go"><meta property="article:tag" content="mysql"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://shuogg1239.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shuogg1239.github.io/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"},"headline":"gh-ost源码分析","image":["https://shuogg1239.github.io/img/og_image.png"],"datePublished":"2024-05-21T16:00:00.000Z","dateModified":"2024-05-22T11:04:45.000Z","author":{"@type":"Person","name":"ShuoGG"},"publisher":{"@type":"Organization","name":"ShuoGG's blog","logo":{"@type":"ImageObject"}},"description":"之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记   源码版本:  源码仓库: https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;gh-ost"}</script><link rel="canonical" href="https://shuogg1239.github.io/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><link rel="icon" href="/images/sys/favicon-32x32-github.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs.min.css"><link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>gh-ost源码分析 - ShuoGG&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ShuoGG&#039;s blog"><meta name="msapplication-TileImage" content="/images/sys/favicon-32x32-github.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ShuoGG&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记    源码版本: 源码仓库: https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;github&amp;#x2F;gh-ost"><meta property="og:type" content="blog"><meta property="og:title" content="gh-ost源码分析"><meta property="og:url" content="https://shuogg1239.github.io/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><meta property="og:site_name" content="ShuoGG&#039;s blog"><meta property="og:description" content="之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记    源码版本: 源码仓库: https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;github&amp;#x2F;gh-ost"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://shuogg1239.github.io/img/og_image.png"><meta property="article:published_time" content="2024-05-21T16:00:00.000Z"><meta property="article:modified_time" content="2024-05-22T11:04:45.000Z"><meta property="article:author" content="ShuoGG"><meta property="article:tag" content="go"><meta property="article:tag" content="mysql"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://shuogg1239.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shuogg1239.github.io/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"},"headline":"gh-ost源码分析","image":["https://shuogg1239.github.io/img/og_image.png"],"datePublished":"2024-05-21T16:00:00.000Z","dateModified":"2024-05-22T11:04:45.000Z","author":{"@type":"Person","name":"ShuoGG"},"publisher":{"@type":"Organization","name":"ShuoGG's blog","logo":{"@type":"ImageObject"}},"description":"之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记\r \r \r \r 源码版本:\r 源码仓库: https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;gh-ost"}</script><link rel="canonical" href="https://shuogg1239.github.io/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><link rel="icon" href="/images/sys/favicon-32x32-github.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs.min.css"><link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,104 +29,93 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-05-21T16:00:00.000Z" title="2024/5/22 00:00:00">2024-05-22</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><h1 class="title is-3 is-size-4-mobile">gh-ost源码分析</h1><div class="content"><h4 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h4><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-05-21T16:00:00.000Z" title="2024/5/22 00:00:00">2024-05-22</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/db/">db</a></span></div></div><h1 class="title is-3 is-size-4-mobile">gh-ost源码分析</h1><div class="content"><h4 id="简述">简述</h4>
+<ul>
 <li>之前用到了gh-ost做大表改表工具, 回过来看看源码, 本篇为阅读源码的笔记</li>
 </ul>
-<h4 id="源码信息"><a href="#源码信息" class="headerlink" title="源码信息"></a>源码信息</h4><ul>
-<li>源码版本: </li>
+<h4 id="源码信息">源码信息</h4>
+<ul>
+<li>源码版本:</li>
 <li>源码仓库: <a target="_blank" rel="noopener" href="https://github.com/github/gh-ost">https://github.com/github/gh-ost</a></li>
 </ul>
-<h4 id="gh-ost原理"><a href="#gh-ost原理" class="headerlink" title="gh-ost原理"></a>gh-ost原理</h4><ul>
-<li><p>gh-ost 首先连接到主库上，根据 alter 语句创建幽灵表，然后作为一个”备库”连接到其中一个真正的备库上(默认设置,想连到master也行)</p>
-</li>
-<li><p>一边在主库上拷贝已有的数据到幽灵表，一边从备库上拉取增量数据的 binlog，然后不断的把 binlog 应用回主库</p>
-</li>
-<li><p>图中 cut-over 是最后一步，锁住主库的源表，等待 binlog 应用完毕，然后替换 gh-ost 表为源表</p>
-</li>
-<li><p>gh-ost 在执行中，会在原本的 binlog event 里面增加以下 hint 和心跳包，用来控制整个流程的进度，检测状态等</p>
-</li>
+<h4 id="gh-ost原理">gh-ost原理</h4>
+<ul>
+<li><p>gh-ost 首先连接到主库上，根据 alter 语句创建幽灵表，然后作为一个"备库"连接到其中一个真正的备库上(默认设置,想连到master也行)</p></li>
+<li><p>一边在主库上拷贝已有的数据到幽灵表，一边从备库上拉取增量数据的 binlog，然后不断的把 binlog 应用回主库</p></li>
+<li><p>图中 cut-over 是最后一步，锁住主库的源表，等待 binlog 应用完毕，然后替换 gh-ost 表为源表</p></li>
+<li><p>gh-ost 在执行中，会在原本的 binlog event 里面增加以下 hint 和心跳包，用来控制整个流程的进度，检测状态等</p></li>
 </ul>
-<h4 id="gh-ost的改表流程"><a href="#gh-ost的改表流程" class="headerlink" title="gh-ost的改表流程"></a>gh-ost的改表流程</h4><ol>
+<h4 id="gh-ost的改表流程">gh-ost的改表流程</h4>
+<ol type="1">
 <li>检查有没有外键和触发器。</li>
 <li>检查表的主键信息。</li>
-<li>检查是否主库或从库，是否开启log_slave_updates，以及binlog信息  </li>
+<li>检查是否主库或从库，是否开启log_slave_updates，以及binlog信息<br />
+</li>
 <li>检查gho和del结尾的临时表是否存在</li>
-<li>创建ghc结尾的表，存数据迁移的信息，以及binlog信息等    </li>
+<li>创建ghc结尾的表，存数据迁移的信息，以及binlog信息等<br />
+</li>
 <li>初始化stream的连接,添加binlog的监听</li>
 <li>创建gho结尾的临时表，执行DDL在gho结尾的临时表上</li>
 <li>开启事务，按照主键id把源表数据写入到gho结尾的表上，再提交，以及binlog apply。</li>
 <li>lock源表，rename 表：rename 源表 to 源_del表，gho表 to 源表。(这个过程叫cut-over)</li>
 <li>清理ghc表。</li>
 </ol>
-<h4 id="关于v1-1-6修复的时区问题"><a href="#关于v1-1-6修复的时区问题" class="headerlink" title="关于v1.1.6修复的时区问题"></a>关于v1.1.6修复的时区问题</h4><ul>
-<li><p>在_gho表执行sql的session和binlog读取时指定的时区不一致导致</p>
+<h4 id="关于v1.1.6修复的时区问题">关于v1.1.6修复的时区问题</h4>
 <ul>
-<li><p>从binlogEvent读取的时间结构体是带了时区的, 该时区是由BinlogParser.timestampStringLocation指定,<br>  在转换成query时会用timestamp结合时区生成时间String</p>
-</li>
-<li><p>强调: 不管是mysql底层还是binlog中, timestamp是不带时区的, 就是4个bytes;</p>
-</li>
+<li>在_gho表执行sql的session和binlog读取时指定的时区不一致导致
+<ul>
+<li><p>从binlogEvent读取的时间结构体是带了时区的, 该时区是由BinlogParser.timestampStringLocation指定, 在转换成query时会用timestamp结合时区生成时间String</p></li>
+<li><p>强调: 不管是mysql底层还是binlog中, timestamp是不带时区的, 就是4个bytes;</p></li>
+</ul></li>
+<li>github.com/go-mysql-org/go-mysql在时区强制指定utc, 新版本变成可配置并默认为系统时区, 所以是go-mysql没考虑兼容性导致</li>
 </ul>
-</li>
-<li><p>github.com&#x2F;go-mysql-org&#x2F;go-mysql在时区强制指定utc, 新版本变成可配置并默认为系统时区, 所以是go-mysql没考虑兼容性导致</p>
-</li>
-</ul>
-<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><ul>
-<li><p>&#x2F;base包:</p>
+<h4 id="源码">源码</h4>
+<ul>
+<li>/base包:
 <ul>
 <li>相当于config, 处理配置信息和日志工具</li>
-</ul>
-</li>
-<li><p>&#x2F;sql包:</p>
+</ul></li>
+<li>/sql包:
 <ul>
 <li>相当于sql_parser, 处理sql解析的工具包</li>
-</ul>
-</li>
-<li><p>&#x2F;mysql包:</p>
+</ul></li>
+<li>/mysql包:
 <ul>
 <li>相当于mysql相关的util包</li>
-</ul>
-</li>
-<li><p>&#x2F;binlog包:</p>
+</ul></li>
+<li>/binlog包:
 <ul>
 <li>仅仅是对replication.BinlogSyncer的封装, 最后将replication.RowsEvent封装成BinlogEntry塞到EventsStreamer.eventsChannel里面</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;server.go</p>
+</ul></li>
+<li>/logic/server.go
 <ul>
 <li>提供接口, 主要用于动态设置一些运行参数</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;hooks.go:</p>
+</ul></li>
+<li>/logic/hooks.go:
 <ul>
 <li>执行hook. 按规定的执行程序名字, 将执行程序放入指定目录, 后面会根据事件执行这些执行程序</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;streamer.go:</p>
+</ul></li>
+<li>/logic/streamer.go:
 <ul>
 <li>在上面binlog包的基础上再封装一层listener, listener处理上面提到的EventsStreamer.eventsChannel接收的BinlogEntry</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;inspect.go:</p>
+</ul></li>
+<li>/logic/inspect.go:
 <ul>
 <li>连接slave, 获取实例的基础信息如表结构, 表大小等, 检查改表是否符合迁移条件</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;throttler.go:</p>
+</ul></li>
+<li>/logic/throttler.go:
 <ul>
 <li>限流器, 调用throttle()会卡住以实现限流</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;applier.go</p>
+</ul></li>
+<li>/logic/applier.go
 <ul>
 <li>gho和ghc的处理包括cutOver, 提供实现. 调用都在Migrator</li>
 <li>ApplyDMLEventQueries(dmlEvents <a href="*binlog.BinlogDMLEvent"></a>): 将binlogEvent转为query, 然后在_gho表执行</li>
-</ul>
-</li>
-<li><p>&#x2F;logic&#x2F;migrator.go</p>
+</ul></li>
+<li>/logic/migrator.go
 <ul>
 <li>主流程. 上述各个模块提供的方法会在migrator中使用, 完成整个改表流程</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/go/">go</a><a class="link-muted mr-2" rel="tag" href="/tags/mysql/">mysql</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/07/30/QQ%E6%9C%BA%E5%99%A8%E4%BA%BAqqbot%E6%8A%8A%E7%8E%A9/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">QQ机器人qqbot把玩</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/01/06/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"><span class="level-item">梯度下降笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-2-tablet is-2-desktop is-2-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-64x64 mx-auto mb-2"><img class="avatar is-rounded" src="/images/sys/avatar.jpg" alt="shuoGG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shuoGG</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">10</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ai/"><span class="level-start"><span class="level-item">Ai</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/PC%E7%AB%AF/"><span class="level-start"><span class="level-item">PC端</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/ai/"><span class="level-start"><span class="level-item">ai</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/db/"><span class="level-start"><span class="level-item">db</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%94%BB%E7%94%BB/"><span class="level-start"><span class="level-item">画画</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-11-26T16:00:00.000Z">2024-11-27</time></p><p class="title"><a href="/2024/11/27/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98icarus%E6%A0%B7%E5%BC%8F%E9%AD%94%E6%94%B9/">博客主题icarus样式魔改</a></p><p class="categories"><a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-10-23T16:00:00.000Z">2024-10-24</time></p><p class="title"><a href="/2024/10/24/llOnebot%E5%AE%9E%E7%8E%B0QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/">llOnebot实现QQ机器人</a></p><p class="categories"><a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-07-29T16:00:00.000Z">2024-07-30</time></p><p class="title"><a href="/2024/07/30/QQ%E6%9C%BA%E5%99%A8%E4%BA%BAqqbot%E6%8A%8A%E7%8E%A9/">QQ机器人qqbot把玩</a></p><p class="categories"><a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-05-21T16:00:00.000Z">2024-05-22</time></p><p class="title"><a href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">gh-ost源码分析</a></p><p class="categories"><a href="/categories/db/">db</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-05T16:00:00.000Z">2024-01-06</time></p><p class="title"><a href="/2024/01/06/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">梯度下降笔记</a></p><p class="categories"><a href="/categories/ai/">ai</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/go/"><span class="tag">go</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grpc/"><span class="tag">grpc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tls/"><span class="tag">tls</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ShuoGG&#039;s blog</a><p class="is-size-7"><span>&copy; 2024 ShuoGG</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
             article: {
