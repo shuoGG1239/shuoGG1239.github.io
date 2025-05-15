@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>live2d学习笔记 - ShuoGG&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ShuoGG&#039;s blog"><meta name="msapplication-TileImage" content="/images/sys/favicon-32x32-github.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ShuoGG&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="手册: https:&amp;#x2F;&amp;#x2F;docs.live2d.com&amp;#x2F;zh-CHS&amp;#x2F;cubism-editor-manual&amp;#x2F;top&amp;#x2F; 关键字: (有忘记的功能就在手册搜关键字查看吧) 辅助线: 其实就是参考线"><meta property="og:type" content="blog"><meta property="og:title" content="live2d学习笔记"><meta property="og:url" content="https://shuogg1239.github.io/2024/11/28/live2d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="ShuoGG&#039;s blog"><meta property="og:description" content="手册: https:&amp;#x2F;&amp;#x2F;docs.live2d.com&amp;#x2F;zh-CHS&amp;#x2F;cubism-editor-manual&amp;#x2F;top&amp;#x2F; 关键字: (有忘记的功能就在手册搜关键字查看吧) 辅助线: 其实就是参考线"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2025/02/23/yW6Rn5I3CT8t1OS.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/D2dMRyzaAG1VU3Y.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/FeHSd2y3ots7kCl.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/ljA2uawCLgoiy37.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/vQDRNcpP2yUsCo4.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/g821bDXlCofnLvI.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/uUnRHsQ8J5X9oK2.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/DUEgolzpPXhwuZA.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/UOyxFtRoD2d9SiN.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/9SpskhOvlX8ZeaB.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/qZpIKWfeRXAgTE7.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/78iPvqLl2OmtybK.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/yjhRkfsWY2n8LCm.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/qtBjZLdhckXyv29.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/EumFUfciJvbBZ1G.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/daPDEYMhkiQZV9z.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/bKucLhnCmyB6OpX.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/8Xwg9ntRuOi1rQ4.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/DFXPLbGfyjRq9e4.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/Rl48QVKUsdDv63k.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/5w1qrbJQzeOT43F.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/QvMrTPiswUYRzXt.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/qbTZSp3nmaV41Us.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/572KV9wcNxuMknm.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/1bqfhGT596MuEnO.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/RWFyPcdo1Qtz62A.png"><meta property="article:published_time" content="2024-11-27T16:00:00.000Z"><meta property="article:modified_time" content="2025-02-24T01:33:27.317Z"><meta property="article:author" content="ShuoGG"><meta property="article:tag" content="live2d"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s2.loli.net/2025/02/23/yW6Rn5I3CT8t1OS.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shuogg1239.github.io/2024/11/28/live2d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"headline":"live2d学习笔记","image":["https://s2.loli.net/2025/02/23/yW6Rn5I3CT8t1OS.png","https://s2.loli.net/2025/02/23/D2dMRyzaAG1VU3Y.png","https://s2.loli.net/2025/02/23/FeHSd2y3ots7kCl.png","https://s2.loli.net/2025/02/23/ljA2uawCLgoiy37.png","https://s2.loli.net/2025/02/23/vQDRNcpP2yUsCo4.png","https://s2.loli.net/2025/02/23/g821bDXlCofnLvI.png","https://s2.loli.net/2025/02/23/uUnRHsQ8J5X9oK2.png","https://s2.loli.net/2025/02/23/DUEgolzpPXhwuZA.png","https://s2.loli.net/2025/02/23/UOyxFtRoD2d9SiN.png","https://s2.loli.net/2025/02/23/9SpskhOvlX8ZeaB.png","https://s2.loli.net/2025/02/23/qZpIKWfeRXAgTE7.png","https://s2.loli.net/2025/02/23/78iPvqLl2OmtybK.png","https://s2.loli.net/2025/02/23/yjhRkfsWY2n8LCm.png","https://s2.loli.net/2025/02/23/qtBjZLdhckXyv29.png","https://s2.loli.net/2025/02/23/EumFUfciJvbBZ1G.png","https://s2.loli.net/2025/02/23/daPDEYMhkiQZV9z.png","https://s2.loli.net/2025/02/23/bKucLhnCmyB6OpX.png","https://s2.loli.net/2025/02/23/8Xwg9ntRuOi1rQ4.png","https://s2.loli.net/2025/02/23/DFXPLbGfyjRq9e4.png","https://s2.loli.net/2025/02/23/Rl48QVKUsdDv63k.png","https://s2.loli.net/2025/02/23/5w1qrbJQzeOT43F.png","https://s2.loli.net/2025/02/23/QvMrTPiswUYRzXt.png","https://s2.loli.net/2025/02/23/qbTZSp3nmaV41Us.png","https://s2.loli.net/2025/02/23/572KV9wcNxuMknm.png","https://s2.loli.net/2025/02/23/1bqfhGT596MuEnO.png","https://s2.loli.net/2025/02/23/RWFyPcdo1Qtz62A.png"],"datePublished":"2024-11-27T16:00:00.000Z","dateModified":"2025-02-24T01:33:27.317Z","author":{"@type":"Person","name":"ShuoGG"},"publisher":{"@type":"Organization","name":"ShuoGG's blog","logo":{"@type":"ImageObject"}},"description":"手册: https:&#x2F;&#x2F;docs.live2d.com&#x2F;zh-CHS&#x2F;cubism-editor-manual&#x2F;top&#x2F; 关键字: (有忘记的功能就在手册搜关键字查看吧) 辅助线: 其实就是参考线"}</script><link rel="canonical" href="https://shuogg1239.github.io/2024/11/28/live2d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/images/sys/favicon-32x32-github.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs.min.css"><link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-11-27T16:00:00.000Z" title="2024/11/28 00:00:00">2024-11-28</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></span></div></div><h1 class="title is-3 is-size-4-mobile">live2d学习笔记</h1><div class="content"><h4 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h4><ul>
+<li>手册: <a target="_blank" rel="noopener" href="https://docs.live2d.com/zh-CHS/cubism-editor-manual/top/">https://docs.live2d.com/zh-CHS/cubism-editor-manual/top/</a></li>
+<li>关键字: (有忘记的功能就在手册搜关键字查看吧)<ul>
+<li>辅助线: 其实就是参考线</li>
+</ul>
+</li>
+</ul>
+<h4 id="live2d通用参数"><a href="#live2d通用参数" class="headerlink" title="live2d通用参数"></a>live2d通用参数</h4><p><img src="https://s2.loli.net/2025/02/23/yW6Rn5I3CT8t1OS.png" alt="1739103806957"></p>
+<h4 id="部件维护"><a href="#部件维护" class="headerlink" title="部件维护"></a>部件维护</h4><ul>
+<li>若有需求变更, 如原画增加部件或修改部件, 上述的变动图层均要以新图层处理 (copy and write), 然后新psd直接拖live2d进行替换即可, 新图层会被自动置顶, 然后当作新部件进行替换或新增工作</li>
+</ul>
+<h4 id="布点-网格"><a href="#布点-网格" class="headerlink" title="布点(网格)"></a>布点(网格)</h4><ul>
+<li>分为<code>手动布点</code>和<code>自动布点</code>, 点击如图工具进入布点模式</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/D2dMRyzaAG1VU3Y.png" alt="1739108820722"></p>
+<ul>
+<li>退出布点模式后, 若拖动网点会带动底下的部件形变, 以下工具可以不同方式拖动网点引起形变</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/FeHSd2y3ots7kCl.png" alt="1739636609042"></p>
+<h4 id="蒙版"><a href="#蒙版" class="headerlink" title="蒙版"></a>蒙版</h4><ul>
+<li>被蒙版部件在<code>剪贴ID</code>填入蒙版部件id即可</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/ljA2uawCLgoiy37.png" alt="1739108383149"></p>
+<h4 id="关键点-关键帧"><a href="#关键点-关键帧" class="headerlink" title="关键点(关键帧)"></a>关键点(关键帧)</h4><ul>
+<li>部件和关键点是<code>多对多的关系</code>, 所以调整部件动画状态的时候, 记得要先创建关键点! </li>
+<li>如果有自信的可以多选所有所需部件然后创建关键点</li>
+<li>呼吸参数是唯一一个自循环的参数</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/vQDRNcpP2yUsCo4.png" alt="1739109075790"></p>
+<h4 id="参数速调-偷懒"><a href="#参数速调-偷懒" class="headerlink" title="参数速调(偷懒)"></a>参数速调(偷懒)</h4><ul>
+<li>针对部件<code>绑反</code>或者<code>绑错参数</code>情况, 提供了解决方法如图红框里的<code>反转</code>,<code>调整</code> ;<ul>
+<li>记得先<code>选中部件</code>才能进行<code>反转</code> <code>调整</code> !</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/g821bDXlCofnLvI.png" alt="1739104774128"></p>
+<ul>
+<li>复制并反转<ul>
+<li>对称的部件可以用<code>动作反转</code>实现复制并反转, 先选中被复制的参数点位, 然后再点动作反转</li>
+<li>对称轴为变形器的中轴</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/uUnRHsQ8J5X9oK2.png" alt="1739202995590"></p>
+<h4 id="软骨骼-路径工具"><a href="#软骨骼-路径工具" class="headerlink" title="软骨骼(路径工具)"></a>软骨骼(路径工具)</h4><ul>
+<li><p>软骨骼主要用于快速对条形部件进行变形, 因为单个单个网点变形实在太慢了!</p>
+</li>
+<li><p>可以理解为柔性的骨骼(普通骨骼为一段一段的, 软骨骼是条曲线)</p>
+</li>
+<li><p>软骨骼不是变形器, 所以不会出现在左下角的变形器列表中</p>
+</li>
+<li><p>先点选部件再进行软骨骼编辑! 如果要删除整个软骨则选中软骨后点左边<code>工具细节</code>栏的删除按钮</p>
+</li>
+<li><p>软骨骼不属于变形器, 所以不会显示到界面左下角的变形器中</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/DUEgolzpPXhwuZA.png" alt="1739108521443"></p>
+<ul>
+<li>路径蒙皮(软骨骼蒙皮)<ul>
+<li>实现: 软骨骼创建好后–&gt;建模–&gt;蒙皮–&gt;变形路径进行蒙皮</li>
+<li>本质: 根据路径创建对应的多个骨骼(旋转变形器)并进行蒙皮, 并自动创建好对应的参数; 所以本质就是一个快捷操作, 你可以通过<code>创建多段骨骼+蒙皮+新建参数+绑定参数</code>来完成同样的效果</li>
+<li>用途: 适合配合物理摆锤快速实现条状部件的物理效果如长发摆动, 丝带飘动, 尾巴翘动 等等</li>
+<li>实例: 下图是实现长发物理摆动的例子, 是路径蒙皮+多段物理的经典配合</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/UOyxFtRoD2d9SiN.png" alt="1739376710506"></p>
+<p><img src="https://s2.loli.net/2025/02/23/9SpskhOvlX8ZeaB.png" alt="1739377264910"></p>
+<h4 id="旋转变形器-骨骼"><a href="#旋转变形器-骨骼" class="headerlink" title="旋转变形器(骨骼)"></a>旋转变形器(骨骼)</h4><ul>
+<li><p>简介: 本质就是骨骼, 基本是用来<code>控制部件位移和旋转</code>的, 虽然它也有缩放和透明度的能力, 但一般不用 (而是由弯曲变形器来完成)</p>
+</li>
+<li><p>骨骼快捷编辑: 按住<code>ctrl</code>拖动骨骼旋心或尖端实现<code>平移</code>和<code>旋转</code>; 按住<code>alt</code>拖动骨骼尖端实现<code>骨骼长度拉伸</code></p>
+</li>
+<li><p>骨骼最常使用的区块如图的红框所示:</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/qZpIKWfeRXAgTE7.png" alt="1739104114716"></p>
+<ul>
+<li><p>骨骼蒙皮</p>
+<ul>
+<li>简介: 骨骼蒙皮不常使用, 它的大部分工作被弯曲变形器取代了</li>
+<li>作用: 由于创建骨骼后, 仅仅是<code>部件与骨骼</code>关联起来, <code>部件网格与骨骼</code>并没有关联起来, 蒙皮就是用来关联</li>
+<li>创建: 按住<code>ctrl</code>后选择<code>1个部件及2个以上骨骼</code>, 然后<code>建模-蒙皮-蒙皮</code></li>
+<li>表现: 创建蒙皮后会自动新增对应的蒙皮部件, 它们每个布点产生了权重参数, 即和骨骼产生了关联</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/78iPvqLl2OmtybK.png" alt="1739111043595"></p>
+</li>
+</ul>
+<h4 id="弯曲变形器"><a href="#弯曲变形器" class="headerlink" title="弯曲变形器"></a>弯曲变形器</h4><ul>
+<li>简介: 用于控制部件的变形, 透明度, 缩放, 工程上不同的部件属性由不同的弯曲变形器独立控制</li>
+<li>快捷编辑: 按住<code>ctrl</code>拖动弯曲变形器实现平移</li>
+<li>对于对称部件外层的弯曲变形器, 一定要记得保证变形器的对称! (为了方便复制反转)</li>
+<li>弯曲变形器的常用区块如图所似:</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/yjhRkfsWY2n8LCm.png" alt="1739113774564"></p>
+<ul>
+<li><p>实际工程上旋转变形器和弯曲变形器经常嵌套使用</p>
+<p><img src="https://s2.loli.net/2025/02/23/qtBjZLdhckXyv29.png" alt="1739113900197"></p>
+</li>
+</ul>
+<h4 id="物理模拟"><a href="#物理模拟" class="headerlink" title="物理模拟"></a>物理模拟</h4><ul>
+<li><p>物理模拟本质也是新增一种A到B的绑定, 但主界面上看不到, 需要进物理模拟界面才能查看和管理该绑定</p>
+</li>
+<li><p>新建: 无需先选中什么, 直接<code>建模</code>-&gt;<code>打开物理/场景混合设定</code>进入物理模拟界面, 然后<code>追加</code>一个组</p>
+</li>
+<li><p>物理模拟界面不要误按空格, 会disable掉物理模拟, 若遇到了再按一次空格恢复</p>
+</li>
+<li><p>我们以<code>头部左右摇摆带动头发摇摆</code>为例子来展示物理模拟: </p>
+<ul>
+<li>例子会用到的参数如下图所示, 简单讲就是<code>角度Z</code>控制头摆, <code>摇动 前发</code>单独控制前发摆</li>
+<li>期望的工作链路为: <code>输入参数(角度Z) --&gt; 输出参数(摇动前发) --&gt; 弯曲变形器hairM --&gt; 前发</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/EumFUfciJvbBZ1G.png" alt="1739202688584"></p>
+<p><img src="https://s2.loli.net/2025/02/23/daPDEYMhkiQZV9z.png" alt="1739201702060"></p>
+<ul>
+<li>关于输入<ul>
+<li>在<code>输入设定</code>进行编辑</li>
+<li>头部左右摇摆为参数<code>角度Z</code> , 所以在输入设定里面, 留一个<code>角度Z</code>的输入即可, 如果没有则追加一个<code>角度Z</code>的输入, 因为输入参数只有1个, 所以影响度设为100</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/bKucLhnCmyB6OpX.png" alt="1739200621516"></p>
+<ul>
+<li>关于输出<ul>
+<li>在<code>输出设定</code>进行编辑</li>
+<li>由于是头摇摆来带动头发运动, 我们把输出参数设置为<code>摇动 前发</code></li>
+<li>最大输出力控制在150~200为优? 存疑</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/8Xwg9ntRuOi1rQ4.png" alt="1739201205699"></p>
+<h4 id="果冻眼"><a href="#果冻眼" class="headerlink" title="果冻眼"></a>果冻眼</h4><ul>
+<li>实现原理: <code>XY双弯曲变形器嵌套</code>+<code>2个参数xy</code>+<code>2段物理摆锤</code>(其实1段也能实现但效果稍逊), 这2个弯曲变形器, 1个负责x轴的拉伸收缩且绑在参数x, 1个负责y轴的拉伸收缩且绑在参数y, 他们的嵌套顺序没所谓</li>
+<li>实例: 如下图</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/DFXPLbGfyjRq9e4.png" alt="1739377758741"></p>
+<p><img src="https://s2.loli.net/2025/02/23/Rl48QVKUsdDv63k.png" alt="1739377919842"></p>
+<h4 id="瞳孔游离-跟踪"><a href="#瞳孔游离-跟踪" class="headerlink" title="瞳孔游离(跟踪)"></a>瞳孔游离(跟踪)</h4><ul>
+<li>用<code>2个参数XY</code>+<code>2个弯曲变形(仅控制位移)</code>即可实现</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/5w1qrbJQzeOT43F.png" alt="1739804193804"></p>
+<h4 id="九轴头部"><a href="#九轴头部" class="headerlink" title="九轴头部"></a>九轴头部</h4><ul>
+<li><p>九轴一般指<code>角度X</code>和<code>角度Y</code>2个参数分别和各大部件的变形器交织而成 (每个变形器绑好9个状态)</p>
+</li>
+<li><p>如图例子为脸做九轴, 变形器<code>face_9d</code>绑在<code>角度X</code>和<code>角度Y</code>参数上, 在5个状态上做好透视形变调整</p>
+<ul>
+<li>5个状态做好后记得<code>四角形合成</code>, 在参数栏的右上角菜单里</li>
+<li>四角形合成本质是软件帮忙计算其他关键点的状态(4个状态), 所以9轴是<code>5+4</code>也是<code>3x3</code></li>
+<li>四角形合成后的那4个状态还是需要手动调整, 自动生成的效果一般不大行</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/QvMrTPiswUYRzXt.png" alt="1739808641548"></p>
+<ul>
+<li>需做九轴的部件很多, 对应需要很多变形器, 如<code>脸9d变形器</code>,<code>眼睛9d变形器</code>, <code>前发9d变形器</code>,<code>后发9d变形器</code>,<code>鼻子9d变形器</code>,<code> 腮红9d变形器</code>, <code>嘴巴9d变形器 </code>等等, <code>变形器x9</code>就是九轴的工作总量</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/qbTZSp3nmaV41Us.png" alt="1739809790811"></p>
+<h4 id="按键表情"><a href="#按键表情" class="headerlink" title="按键表情"></a>按键表情</h4><ul>
+<li><p>由按键触发而非动捕触发的表情, 其实有点像动画</p>
+</li>
+<li><p>一种特殊表情一般由1个自定义参数控制</p>
+</li>
+<li><p>控制脚本: set_special_pose_param myGirl ‘Param123’ 0 1 1</p>
+</li>
+</ul>
+<h4 id="口型"><a href="#口型" class="headerlink" title="口型"></a>口型</h4><ul>
+<li><p>本质就是做好<code>3x2</code>种状态帧, 即<code>开闭</code>和<code>喜平悲</code>的排列组合6种状态 (变形参也可以自行加关键点例如喜怒平悲)</p>
+<p><img src="https://s2.loli.net/2025/02/23/572KV9wcNxuMknm.png" alt="1739635673658"></p>
+</li>
+<li><p><code>嘴变形</code>和<code>嘴张开和闭合</code>是会进行自动四角合成的, 是属于系统级参数了</p>
+</li>
+<li><p>嘴巴各参数状态参考: (可以仅关注红框的6状态)</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/1bqfhGT596MuEnO.png" alt="1739802789539"></p>
+<h4 id="动画制作"><a href="#动画制作" class="headerlink" title="动画制作"></a>动画制作</h4><ul>
+<li><p>动画的一些工作其实可以直接由参数直接实现, 那什么场景适合动画?</p>
+<ul>
+<li>无需复原的变化.  参数是变完后须复原, 动画可以实现一去不复返</li>
+</ul>
+</li>
+<li><p>动画和面捕是<code>互斥</code>的, 也就是播放动画时, 面捕参数的参数变动是失效的</p>
+</li>
+<li><p>制作步骤: </p>
+<ol>
+<li>切换到<code>Animation</code>模式</li>
+<li>创建新场景(左下角4小图标的第1个) </li>
+<li>将模型拖入空白场景界面中(模型在左上角的项目那里)</li>
+<li>展开live2d参数, 给需要动的参数打初始帧(00:00处)</li>
+<li>初始帧确认打齐之后, 可以把其他不需要的参数隐藏, 不然参数找死你 (隐藏按钮在参数框内的循环和速度右边的下拉菜单的”隐藏未选择的属性”)</li>
+<li>拉到某个时间点, 调整所需live2d参数, 会自动打帧. 如果需要手动打针, 就在时间线中右键选插入关键帧即可</li>
+<li>动画最后最好所有参数都打一个结束帧, 参数和初始帧一样(这步其实可以在第4步一起先做了)</li>
+<li>所有动画做好后, 如果模型带物理, 则要进行物理烘焙: <code>动画 -&gt; 轨 -&gt; 物理烘焙生成动画</code>, 此时物理参数会自动生成关键帧, 你可以调整它们但一般没必要</li>
+<li>做好动画, 文件-保存, 格式为<code>.can3</code></li>
+<li>做好动画, 文件-导出运作档, 导出格式为<code>.motion3.json</code>, 如果是循环动画, 命名为<code>IDLE.motion3.json</code></li>
+<li>控制脚本: set_special_action_anime 模型名 ‘动画名’ 控制id</li>
+</ol>
+</li>
+<li><p>循环动画</p>
+<ul>
+<li>所谓循环动画的概念只是来自面捕软件, 对于Live2d只是一个普通动画</li>
+<li>循环动画可以用于一些场景道具, 例如光环循环旋转之类</li>
+<li>导出动画文件时, 文件名必须为<code>IDLE.motion3.json</code></li>
+<li>为了方便制作循环动画, 绑参数时可以做成循环参数, 如图:</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/RWFyPcdo1Qtz62A.png" alt="1739633013356"></p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/live2d/">live2d</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/12/09/blender-kurt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">bender-kurt教程学习笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/11/27/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98icarus%E6%A0%B7%E5%BC%8F%E9%AD%94%E6%94%B9/"><span class="level-item">博客主题icarus样式魔改</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-2-tablet is-2-desktop is-2-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-64x64 mx-auto mb-2"><img class="avatar is-rounded" src="/images/sys/avatar.jpg" alt="shuoGG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shuoGG</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">55</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">16</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/ai/"><span class="level-start"><span class="level-item">ai</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E6%9D%82/"><span class="level-start"><span class="level-item">杂杂</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"><span class="level-start"><span class="level-item">游戏开发</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BE%8E%E6%9C%AF/"><span class="level-start"><span class="level-item">美术</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-04-30T16:00:00.000Z">2025-05-01</time></p><p class="title"><a href="/2025/05/01/BA%E9%80%86%E5%90%91%E8%B5%84%E6%BA%90%E4%B8%8E%E8%A7%A3%E5%8C%85%E6%80%9D%E8%B7%AF/">BA逆向资源与解包思路</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-04-17T16:00:00.000Z">2025-04-18</time></p><p class="title"><a href="/2025/04/18/astrbot%E6%BA%90%E7%A0%81/">astrbot源码</a></p><p class="categories"><a href="/categories/ai/">ai</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-07T16:00:00.000Z">2025-03-08</time></p><p class="title"><a href="/2025/03/08/blender-%E4%BB%8E%E6%81%8B%E6%B4%BB%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B/">blender-从恋活导入模型</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-06T16:00:00.000Z">2025-03-07</time></p><p class="title"><a href="/2025/03/07/blender-%E6%81%8B%E6%B4%BB%E6%94%B9%E6%A8%A1%E7%AC%94%E8%AE%B0/">bender-恋活改模笔记</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-02-28T16:00:00.000Z">2025-03-01</time></p><p class="title"><a href="/2025/03/01/%E7%94%A8csp%E7%BC%96%E8%BE%91gif%E5%8A%A8%E7%94%BB/">用csp编辑gif动画</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blender/"><span class="tag">blender</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/electron/"><span class="tag">electron</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/go/"><span class="tag">go</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/godot/"><span class="tag">godot</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grpc/"><span class="tag">grpc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/live2d/"><span class="tag">live2d</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/net/"><span class="tag">net</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sd/"><span class="tag">sd</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spine/"><span class="tag">spine</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ShuoGG&#039;s blog</a><p class="is-size-7"><span>&copy; 2025 ShuoGG</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

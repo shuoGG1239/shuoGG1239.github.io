@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>godot学习笔记-01 FoxyVsSlime - ShuoGG&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ShuoGG&#039;s blog"><meta name="msapplication-TileImage" content="/images/sys/favicon-32x32-github.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ShuoGG&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本篇是制作FoxyVsSlime这个demo的学习笔记  FoxyVsSlime的godot工程: https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;shuoGG1239&amp;#x2F;godot_play&amp;#x2F;tree&amp;#x2F;main&amp;#x2F;foxy_vs_slime    官方Manual: 2D界面  场景与节点  下图1和图2都是给main节点添加子节点"><meta property="og:type" content="blog"><meta property="og:title" content="godot学习笔记-01 FoxyVsSlime"><meta property="og:url" content="https://shuogg1239.github.io/2025/02/22/godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-01%20FoxyVsSlime/"><meta property="og:site_name" content="ShuoGG&#039;s blog"><meta property="og:description" content="本篇是制作FoxyVsSlime这个demo的学习笔记  FoxyVsSlime的godot工程: https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;shuoGG1239&amp;#x2F;godot_play&amp;#x2F;tree&amp;#x2F;main&amp;#x2F;foxy_vs_slime    官方Manual: 2D界面  场景与节点  下图1和图2都是给main节点添加子节点"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2025/02/23/cryvfN5nMFBL6DP.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/Y9QxdBcybkfNjG1.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/I9vMBqaPWYZsGF4.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/D63gBEwKQnJaWHk.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/UIBNA1Esh2yQ4vJ.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/rhEVwsut1JOc4HU.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/xvTu2sHfIOZc5FX.png"><meta property="og:image" content="https://s2.loli.net/2025/02/23/Qrqm3otP9cuMOIK.png"><meta property="article:published_time" content="2025-02-21T16:00:00.000Z"><meta property="article:modified_time" content="2025-03-24T01:22:23.692Z"><meta property="article:author" content="ShuoGG"><meta property="article:tag" content="godot"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s2.loli.net/2025/02/23/cryvfN5nMFBL6DP.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shuogg1239.github.io/2025/02/22/godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-01%20FoxyVsSlime/"},"headline":"godot学习笔记-01 FoxyVsSlime","image":["https://s2.loli.net/2025/02/23/cryvfN5nMFBL6DP.png","https://s2.loli.net/2025/02/23/Y9QxdBcybkfNjG1.png","https://s2.loli.net/2025/02/23/I9vMBqaPWYZsGF4.png","https://s2.loli.net/2025/02/23/D63gBEwKQnJaWHk.png","https://s2.loli.net/2025/02/23/UIBNA1Esh2yQ4vJ.png","https://s2.loli.net/2025/02/23/rhEVwsut1JOc4HU.png","https://s2.loli.net/2025/02/23/xvTu2sHfIOZc5FX.png","https://s2.loli.net/2025/02/23/Qrqm3otP9cuMOIK.png"],"datePublished":"2025-02-21T16:00:00.000Z","dateModified":"2025-03-24T01:22:23.692Z","author":{"@type":"Person","name":"ShuoGG"},"publisher":{"@type":"Organization","name":"ShuoGG's blog","logo":{"@type":"ImageObject"}},"description":"本篇是制作FoxyVsSlime这个demo的学习笔记  FoxyVsSlime的godot工程: https:&#x2F;&#x2F;github.com&#x2F;shuoGG1239&#x2F;godot_play&#x2F;tree&#x2F;main&#x2F;foxy_vs_slime    官方Manual: 2D界面  场景与节点  下图1和图2都是给main节点添加子节点"}</script><link rel="canonical" href="https://shuogg1239.github.io/2025/02/22/godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-01%20FoxyVsSlime/"><link rel="icon" href="/images/sys/favicon-32x32-github.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs.min.css"><link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-02-21T16:00:00.000Z" title="2025/2/22 00:00:00">2025-02-22</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a></span></div></div><h1 class="title is-3 is-size-4-mobile">godot学习笔记-01 FoxyVsSlime</h1><div class="content"><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li><p>本篇是制作FoxyVsSlime这个demo的学习笔记</p>
+</li>
+<li><p>FoxyVsSlime的godot工程: <a target="_blank" rel="noopener" href="https://github.com/shuoGG1239/godot_play/tree/main/foxy_vs_slime">https://github.com/shuoGG1239/godot_play&#x2F;tree&#x2F;main&#x2F;foxy_vs_slime</a></p>
+</li>
+</ul>
+<h4 id="基础界面及操作"><a href="#基础界面及操作" class="headerlink" title="基础界面及操作"></a>基础界面及操作</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://docs.godotengine.org/zh-cn/4.3/tutorials/2d/introduction_to_2d.html#d-workspace">官方Manual: 2D界面</a></p>
+</li>
+<li><p>场景与节点</p>
+<ul>
+<li>下图1和图2都是给<code>main节点</code>添加子节点</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/cryvfN5nMFBL6DP.png" alt="img_1740316128911.png"></p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/Y9QxdBcybkfNjG1.png" alt="img_1740315945789.png"></p>
+<ul>
+<li>2D场景的对象编辑<ul>
+<li>如图, QWES: 选择,移动,旋转,缩放</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/I9vMBqaPWYZsGF4.png" alt="img_1740315669627.png"></p>
+<ul>
+<li>文件系统(资源管理)<ul>
+<li>资源直接从外面拖进来就行</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/D63gBEwKQnJaWHk.png" alt="img_1740314995880.png"></p>
+<ul>
+<li>检查器<ul>
+<li>下图是从检查器查看和编辑<code>main节点</code>的属性</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/02/23/UIBNA1Esh2yQ4vJ.png" alt="img_1740316553935.png"></p>
+<ul>
+<li>脚本<ul>
+<li>脚本是绑在节点上的, 节点实例化后会执行脚本上的各种handler如<code>_ready()</code>,<code>_process(float)</code>等等</li>
+<li>@export可以将变量暴露到节点的检查器进行编辑, 例如绑定其他场景类或节点实例或资源等等</li>
+<li>脚本可以直接使用被绑节点实例的field, 不需要加this或self之类的, 查看修改都行, 例如main节点是Node2D类型, 有<code>position</code>属性, 可以直接<code>position=xxx</code>直接修改main节点的位置</li>
+<li>脚本对应节点上的子节点可以直接<code>$节点id</code>获取其节点</li>
+<li><img src="https://s2.loli.net/2025/02/23/rhEVwsut1JOc4HU.png" alt="img_1740317436955.png"></li>
+<li>看下另外一个节点enemy, 是Area2D节点所以有碰撞信号如<code>_area_entered</code>, 红是信号, 绿是信号接受函数, 类似Qt的信号与槽</li>
+<li><img src="https://s2.loli.net/2025/02/23/xvTu2sHfIOZc5FX.png" alt="img_1740320846610.png"></li>
+</ul>
+</li>
+<li>调试, 按F5运行游戏调试<ul>
+<li>运行期间可以在<code>场景/远程</code>时实查看运行时节点</li>
+<li><img src="https://s2.loli.net/2025/02/23/Qrqm3otP9cuMOIK.png" alt="img_1740322422800.png"></li>
+</ul>
+</li>
+</ul>
+<h4 id="关于position"><a href="#关于position" class="headerlink" title="关于position"></a>关于position</h4><ul>
+<li><code>position</code>变量是相对父节的位置, 全局位置则是<code>global_position</code></li>
+<li>节点默认的初始<code>position</code>就是<code>(0,0)</code>, 你可以看下Tranform的position或者在onready打印下看看</li>
+<li>例如<code>game</code>和<code>player</code>是父子关系, <code>player</code>一开始放置在<code>game</code>的<code>(111,222)</code>位置, 此时如果<code>player</code>的<code>position</code>从<code>(0,0)</code>变为<code>(100,300)</code>, 他则在<code>game</code>的位置就变成<code>(211,522)</code>了</li>
+</ul>
+<h4 id="FoxyVsSlime工程用到的类"><a href="#FoxyVsSlime工程用到的类" class="headerlink" title="FoxyVsSlime工程用到的类"></a>FoxyVsSlime工程用到的类</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://docs.godotengine.org/zh-cn/4.3/classes/class_node2d.html">官方Class Manual: Node2d</a></p>
+</li>
+<li><p>主场景: <code>Node2D</code></p>
+<ul>
+<li>相机: <code>Camera2D</code></li>
+<li>文字容器: <code>CanvasLayer</code><ul>
+<li>文字: <code>Label</code></li>
+</ul>
+</li>
+<li>背景: <code>Node2D</code> (Node2D可以当组来使用)<ul>
+<li>背景图: <code>Sprite2D</code></li>
+<li>边界: <code>StaticBody2D</code><ul>
+<li>物理碰撞区: <code>CollisionShape2D</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定时器: <code>Timer </code></li>
+<li>BGM: <code>AudioStreamPlayer</code></li>
+</ul>
+</li>
+<li><p>玩家foxy: <code>CharacterBody2D</code> (相比Sprite2D,Node2D多了<code>velocity</code>系列属性, 方便控制移动)</p>
+<ul>
+<li>foxy动画雪碧图: <code>AnimatedSprite2D</code></li>
+<li>foxy物理碰撞区:  <code>CollisionShape2D</code></li>
+<li>foxy声音: <code>AudioStreamPlayer</code></li>
+<li>定时器: <code>Timer</code></li>
+</ul>
+</li>
+<li><p>敌人slime: <code>Area2D</code> (能检测其他带物理碰撞区的节点的碰撞信号<code>area_entered</code>,<code>body_entered</code>)</p>
+<ul>
+<li>slime动画雪碧图: <code>AnimatedSprite2D</code></li>
+<li>slime物理碰撞区:  <code>CollisionShape2D</code></li>
+<li>slime声音: <code>AudioStreamPlayer</code></li>
+</ul>
+</li>
+<li><p>玩家输入</p>
+<ul>
+<li><code>Input</code>: 单例<ul>
+<li>velocity &#x3D; Input.get_vector(“left”, “right”, “up”, “down”)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="其他常用类或函数"><a href="#其他常用类或函数" class="headerlink" title="其他常用类或函数"></a>其他常用类或函数</h4><ul>
+<li><p><code>PackedScene</code>: 可以认为是Scene类的容器, 用instantiate()实例化</p>
+</li>
+<li><p><code>get_tree()</code>: 返回包含该节点的 SceneTree, 是<code>Node</code>的方法</p>
+</li>
+<li><p><code>get_tree().current_scene</code>: 主场景节点(即root的子节点main)</p>
+</li>
+<li><p><code>await get_tree().create_timer(1).timeout</code>: 同步等待1s</p>
+</li>
+<li><p><code>queue_free</code>: 删除本节点, 是<code>Node</code>的方法</p>
+</li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/godot/">godot</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2025/03/01/%E7%94%A8csp%E7%BC%96%E8%BE%91gif%E5%8A%A8%E7%94%BB/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">用csp编辑gif动画</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/01/13/csp%E6%8F%92%E7%94%BB%E6%A8%A1%E5%BC%8F%E8%BD%AC%E5%8A%A8%E7%94%BB%E6%A8%A1%E5%BC%8F/"><span class="level-item">csp插画模式转动画模式</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-2-tablet is-2-desktop is-2-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-64x64 mx-auto mb-2"><img class="avatar is-rounded" src="/images/sys/avatar.jpg" alt="shuoGG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shuoGG</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">55</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">16</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/ai/"><span class="level-start"><span class="level-item">ai</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E6%9D%82/"><span class="level-start"><span class="level-item">杂杂</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"><span class="level-start"><span class="level-item">游戏开发</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BE%8E%E6%9C%AF/"><span class="level-start"><span class="level-item">美术</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-04-30T16:00:00.000Z">2025-05-01</time></p><p class="title"><a href="/2025/05/01/BA%E9%80%86%E5%90%91%E8%B5%84%E6%BA%90%E4%B8%8E%E8%A7%A3%E5%8C%85%E6%80%9D%E8%B7%AF/">BA逆向资源与解包思路</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-04-17T16:00:00.000Z">2025-04-18</time></p><p class="title"><a href="/2025/04/18/astrbot%E6%BA%90%E7%A0%81/">astrbot源码</a></p><p class="categories"><a href="/categories/ai/">ai</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-07T16:00:00.000Z">2025-03-08</time></p><p class="title"><a href="/2025/03/08/blender-%E4%BB%8E%E6%81%8B%E6%B4%BB%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B/">blender-从恋活导入模型</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-06T16:00:00.000Z">2025-03-07</time></p><p class="title"><a href="/2025/03/07/blender-%E6%81%8B%E6%B4%BB%E6%94%B9%E6%A8%A1%E7%AC%94%E8%AE%B0/">bender-恋活改模笔记</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-02-28T16:00:00.000Z">2025-03-01</time></p><p class="title"><a href="/2025/03/01/%E7%94%A8csp%E7%BC%96%E8%BE%91gif%E5%8A%A8%E7%94%BB/">用csp编辑gif动画</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blender/"><span class="tag">blender</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/electron/"><span class="tag">electron</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/go/"><span class="tag">go</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/godot/"><span class="tag">godot</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grpc/"><span class="tag">grpc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/live2d/"><span class="tag">live2d</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/net/"><span class="tag">net</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sd/"><span class="tag">sd</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spine/"><span class="tag">spine</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ShuoGG&#039;s blog</a><p class="is-size-7"><span>&copy; 2025 ShuoGG</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

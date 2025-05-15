@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>bender-MMD学习笔记 - ShuoGG&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ShuoGG&#039;s blog"><meta name="msapplication-TileImage" content="/images/sys/favicon-32x32-github.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ShuoGG&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="mmd主要定义了一套规范, 如骨骼命名规范, 有标准就可以使组件通用化, 如动作可以通用  mmd文件  .pmx: mmd模型文件 .vmd: mmd动作(运动)文件 .vpd: mmd姿态文件     在MMD插件中: 模型导入-&amp;gt; 导入pmx文件-&amp;gt; 选择模型 -&amp;gt; 转换给Blender"><meta property="og:type" content="blog"><meta property="og:title" content="bender-MMD学习笔记"><meta property="og:url" content="https://shuogg1239.github.io/2024/03/01/blender-MMD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="ShuoGG&#039;s blog"><meta property="og:description" content="mmd主要定义了一套规范, 如骨骼命名规范, 有标准就可以使组件通用化, 如动作可以通用  mmd文件  .pmx: mmd模型文件 .vmd: mmd动作(运动)文件 .vpd: mmd姿态文件     在MMD插件中: 模型导入-&amp;gt; 导入pmx文件-&amp;gt; 选择模型 -&amp;gt; 转换给Blender"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2025/03/26/hz3aSADMKlf1sVB.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/RaMeVzbEHvx3J8o.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/6dhmcRK13eH7Vga.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/WZE9RuD3JytQixc.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/juMbnp76C9YZNkX.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/J3BM2NFDQ5ZSwby.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/1WVJgfpIHYLQidu.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/4UBzfVRGHmCWxkj.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/Qpl6BWhdRCHFVNZ.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/pjSY8d79mgQT6HX.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/4yCO9YQIpRwDqHW.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/keS3vjxUNCA9sgt.png"><meta property="og:image" content="https://s2.loli.net/2025/03/26/oICvBaDT6bmz2h3.png"><meta property="og:image" content="https://s2.loli.net/2025/03/27/6EVtfZGCj2mhOkv.png"><meta property="article:published_time" content="2024-02-29T16:00:00.000Z"><meta property="article:modified_time" content="2025-04-08T03:04:49.070Z"><meta property="article:author" content="ShuoGG"><meta property="article:tag" content="blender"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s2.loli.net/2025/03/26/hz3aSADMKlf1sVB.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shuogg1239.github.io/2024/03/01/blender-MMD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"headline":"bender-MMD学习笔记","image":["https://s2.loli.net/2025/03/26/hz3aSADMKlf1sVB.png","https://s2.loli.net/2025/03/26/RaMeVzbEHvx3J8o.png","https://s2.loli.net/2025/03/26/6dhmcRK13eH7Vga.png","https://s2.loli.net/2025/03/26/WZE9RuD3JytQixc.png","https://s2.loli.net/2025/03/26/juMbnp76C9YZNkX.png","https://s2.loli.net/2025/03/26/J3BM2NFDQ5ZSwby.png","https://s2.loli.net/2025/03/26/1WVJgfpIHYLQidu.png","https://s2.loli.net/2025/03/26/4UBzfVRGHmCWxkj.png","https://s2.loli.net/2025/03/26/Qpl6BWhdRCHFVNZ.png","https://s2.loli.net/2025/03/26/pjSY8d79mgQT6HX.png","https://s2.loli.net/2025/03/26/4yCO9YQIpRwDqHW.png","https://s2.loli.net/2025/03/26/keS3vjxUNCA9sgt.png","https://s2.loli.net/2025/03/26/oICvBaDT6bmz2h3.png","https://s2.loli.net/2025/03/27/6EVtfZGCj2mhOkv.png"],"datePublished":"2024-02-29T16:00:00.000Z","dateModified":"2025-04-08T03:04:49.070Z","author":{"@type":"Person","name":"ShuoGG"},"publisher":{"@type":"Organization","name":"ShuoGG's blog","logo":{"@type":"ImageObject"}},"description":"mmd主要定义了一套规范, 如骨骼命名规范, 有标准就可以使组件通用化, 如动作可以通用  mmd文件  .pmx: mmd模型文件 .vmd: mmd动作(运动)文件 .vpd: mmd姿态文件     在MMD插件中: 模型导入-&gt; 导入pmx文件-&gt; 选择模型 -&gt; 转换给Blender"}</script><link rel="canonical" href="https://shuogg1239.github.io/2024/03/01/blender-MMD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/images/sys/favicon-32x32-github.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs.min.css"><link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ShuoGG&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/shuogg1239"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-02-29T16:00:00.000Z" title="2024/3/1 00:00:00">2024-03-01</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></span></div></div><h1 class="title is-3 is-size-4-mobile">bender-MMD学习笔记</h1><div class="content"><h3 id="MMD"><a href="#MMD" class="headerlink" title="MMD"></a>MMD</h3><ul>
+<li><p>mmd主要定义了一套规范, 如骨骼命名规范, 有标准就可以使组件通用化, 如动作可以通用</p>
+</li>
+<li><p>mmd文件</p>
+<ul>
+<li><code>.pmx</code>: mmd模型文件</li>
+<li><code>.vmd</code>: mmd动作(运动)文件</li>
+<li><code>.vpd</code>: mmd姿态文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="MMD导入Blender"><a href="#MMD导入Blender" class="headerlink" title="MMD导入Blender"></a>MMD导入Blender</h3><ul>
+<li>在MMD插件中: 模型导入-&gt; 导入pmx文件-&gt; 选择模型 -&gt; 转换给Blender</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/03/26/hz3aSADMKlf1sVB.png" alt="blender2_1742834248543.png"></p>
+<ul>
+<li>若想单独编辑组件, 可按材质将各部件拆开, 如下图<ul>
+<li>人物一般不建议做拆分, 会出现奇奇怪怪的问题</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/03/26/RaMeVzbEHvx3J8o.png" alt="blender2_1742834610107.png"></p>
+<ul>
+<li>模型描边: 点<code>边缘预览</code>可为模型描边<br><img src="https://s2.loli.net/2025/03/26/6dhmcRK13eH7Vga.png" alt="blender2_1742835938862.png"></li>
+</ul>
+<h3 id="三渲二"><a href="#三渲二" class="headerlink" title="三渲二"></a>三渲二</h3><ol>
+<li><p>方式一: 直接用MiaoBox的三渲二插件</p>
+<ul>
+<li><img src="https://s2.loli.net/2025/03/26/WZE9RuD3JytQixc.png" alt="blender2_1742835239935.png"></li>
+<li><img src="https://s2.loli.net/2025/03/26/juMbnp76C9YZNkX.png" alt="blender2_1742835466080.png"></li>
+<li>效果如图: <img src="https://s2.loli.net/2025/03/26/J3BM2NFDQ5ZSwby.png" alt="blender2_1742835541451.png"></li>
+</ul>
+</li>
+</ol>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><ul>
+<li><p>动作文件导入</p>
+<ul>
+<li>vmd文件可以包含<code>表情动作</code>,<code>肢体动作</code>,<code>镜头动作</code>, 也可以分开包含</li>
+<li>假设vmd文件同时包含了以上3种动作:<ul>
+<li>选中人物, 只能导入表情动作</li>
+<li>选中骨架, 只能导入肢体动作</li>
+<li>权限人物+骨架, 能同时导入表情+肢体动作</li>
+<li>选中摄像机, 只能导入镜头动作 (一般镜头动作是单独vmd文件)</li>
+</ul>
+</li>
+<li>导入动作前记得把所有<code>ik切换</code>关掉, 不然有时会出现脚动不了的情况</li>
+</ul>
+</li>
+<li><p>动作导入示例</p>
+<ul>
+<li>全选模型 -&gt; 运动&#x2F;导入 -&gt; 导入vmd文件, 边距改30(有多个文件就重复几次)-&gt; 按空格看看动画效果</li>
+<li><img src="https://s2.loli.net/2025/03/26/1WVJgfpIHYLQidu.png" alt="blender2_1742916179415.png"></li>
+</ul>
+</li>
+<li><p>导入动画后, 时间线不会显示关键帧的, 在选择骨骼后按i插入关键帧后就显示了</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/03/26/4UBzfVRGHmCWxkj.png" alt="blender2_1742837651081.png"></p>
+<ul>
+<li>摄像机导入<ul>
+<li>选中摄像机再导入</li>
+<li><img src="https://s2.loli.net/2025/03/26/Qpl6BWhdRCHFVNZ.png" alt="blender2_1742920696893.png"></li>
+<li>调整摄像机参数或手动K帧, 一般也是只调整这个摄像机</li>
+<li><img src="https://s2.loli.net/2025/03/26/pjSY8d79mgQT6HX.png" alt="blender2_1742921097175.png"></li>
+</ul>
+</li>
+<li>表情动画<ul>
+<li>表情动画一般是用形态键实现, 所以在形态键栏中调整或K帧</li>
+<li><img src="https://s2.loli.net/2025/03/26/4yCO9YQIpRwDqHW.png" alt="blender2_1742921691818.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="物理"><a href="#物理" class="headerlink" title="物理"></a>物理</h3><ul>
+<li>物理烘培<ul>
+<li>开启物理-&gt; 更新世界 -&gt; 烘焙 -&gt; 等待物理烘培结束(图示例是烘到39帧)-&gt; 空格看看动画效果</li>
+<li><img src="https://s2.loli.net/2025/03/26/keS3vjxUNCA9sgt.png" alt="blender2_1742836752605.png"></li>
+</ul>
+</li>
+<li>刚体<ul>
+<li>物理模拟的原理就是靠刚体模拟实现</li>
+<li>点击刚体图标显示刚体</li>
+<li>若要修改刚体: 删除烘焙 -&gt; 关闭物理 -&gt; 再去修改刚体</li>
+<li><img src="https://s2.loli.net/2025/03/26/oICvBaDT6bmz2h3.png" alt="blender2_1742836997690.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="换头手术"><a href="#换头手术" class="headerlink" title="换头手术"></a>换头手术</h3><ol>
+<li>姿态模式下选头部骨骼, 切断, 头部删掉</li>
+<li>导入另一个mmd模型, 姿态模式下选头部骨骼, 切断, 身体删掉</li>
+<li>头部安放到合适位置</li>
+<li>同时选中头和身的骨架, 进入姿态模式, 选择头部骨骼, 再选颈部骨骼, 合并</li>
+</ol>
+<p><img src="https://s2.loli.net/2025/03/27/6EVtfZGCj2mhOkv.png" alt="1743008446582.png"></p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/blender/">blender</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/05/22/gh-ost%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">gh-ost源码分析</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/01/19/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"><span class="level-item">神经网络基础</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-2-tablet is-2-desktop is-2-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-64x64 mx-auto mb-2"><img class="avatar is-rounded" src="/images/sys/avatar.jpg" alt="shuoGG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">shuoGG</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">55</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">16</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/ai/"><span class="level-start"><span class="level-item">ai</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E6%9D%82/"><span class="level-start"><span class="level-item">杂杂</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"><span class="level-start"><span class="level-item">游戏开发</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BE%8E%E6%9C%AF/"><span class="level-start"><span class="level-item">美术</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-04-30T16:00:00.000Z">2025-05-01</time></p><p class="title"><a href="/2025/05/01/BA%E9%80%86%E5%90%91%E8%B5%84%E6%BA%90%E4%B8%8E%E8%A7%A3%E5%8C%85%E6%80%9D%E8%B7%AF/">BA逆向资源与解包思路</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-04-17T16:00:00.000Z">2025-04-18</time></p><p class="title"><a href="/2025/04/18/astrbot%E6%BA%90%E7%A0%81/">astrbot源码</a></p><p class="categories"><a href="/categories/ai/">ai</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-07T16:00:00.000Z">2025-03-08</time></p><p class="title"><a href="/2025/03/08/blender-%E4%BB%8E%E6%81%8B%E6%B4%BB%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B/">blender-从恋活导入模型</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-06T16:00:00.000Z">2025-03-07</time></p><p class="title"><a href="/2025/03/07/blender-%E6%81%8B%E6%B4%BB%E6%94%B9%E6%A8%A1%E7%AC%94%E8%AE%B0/">bender-恋活改模笔记</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-02-28T16:00:00.000Z">2025-03-01</time></p><p class="title"><a href="/2025/03/01/%E7%94%A8csp%E7%BC%96%E8%BE%91gif%E5%8A%A8%E7%94%BB/">用csp编辑gif动画</a></p><p class="categories"><a href="/categories/%E7%BE%8E%E6%9C%AF/">美术</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blender/"><span class="tag">blender</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/electron/"><span class="tag">electron</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/go/"><span class="tag">go</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/godot/"><span class="tag">godot</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grpc/"><span class="tag">grpc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/live2d/"><span class="tag">live2d</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/net/"><span class="tag">net</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sd/"><span class="tag">sd</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spine/"><span class="tag">spine</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ShuoGG&#039;s blog</a><p class="is-size-7"><span>&copy; 2025 ShuoGG</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
